@@ -90,8 +90,8 @@ public:
             )
     {this->_dp->EcrireNom(nom);}
 
-    void MasquerFenetre(void){this->_dp->MasquerFenetre();}
-    void AfficherFenetre(void){this->_dp->AfficherFenetre();}
+    void MasquerFenetre(void){this->_dp->Cacher();}
+    void AfficherFenetre(void){this->_dp->Montrer();}
 
     void EcrireEchelle(
             const double ex,
