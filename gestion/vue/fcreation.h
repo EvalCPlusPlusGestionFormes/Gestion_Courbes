@@ -38,6 +38,9 @@ public:
     void Afficher(const int type,string *sm,string *sr,const int nbs);
     void Effacer(const int type);
     void Selectionner(const int type,const int sel);
+
+    static void Informer(const char *s);
+
     int verifChecked(void);
     void recupParamsCosSin(int&, double&);
     void recupParamsCommuns(double&, double&, double&, double&,

@@ -110,6 +110,7 @@ static void AjouterRepere(
     }
 }
 
+/*
 // min<=n<=max
 static int TirerAuSort(
         const int min,
@@ -122,7 +123,7 @@ static int TirerAuSort(
     return (n);
 }
 
-/*
+
 // min<=f<=max
 static double TirerAuSort(
         const double min,
@@ -153,6 +154,21 @@ static void Reafficher(
     gd->InitialiserSliders();
     gd->Rafraichir();
 }
+
+// Eléments copiés à 15h30
+    static void EffacerSelection(
+            gesdessin *gd,
+            int &sel)
+    {
+        if (sel != -1)
+        {
+            gd->Colorer(sel);
+            gd->EcrireEpaisseur(sel);
+            sel = -1;
+        }
+    }
+
+// Fin éléments copiés
 
 static void toString(
         gesdessin *gd,
@@ -188,6 +204,18 @@ static void AfficherListe(
     delete[] sm;
     delete[] sr;
 }
+
+// Eléments copiés à 15h30
+    static void EffacerListe(
+            const int t,
+            fcreation *fc,
+            const int index)
+    {
+        fc->Effacer(t);
+        fc->Selectionner(t,index);
+    }
+
+// Fin éléments copiés
 
 static void AjouterTrigos(
         gesdessin *gd,
@@ -247,6 +275,134 @@ static void AjouterTrigos(
     }
 }
 
+/*
+// Eléments copiés à 15h30
+    static void AjouterMaths(
+            gesdessin *gd,
+            const int index)
+    {
+        puissance2 *dp;
+        racinecarre *dr;
+        fonction *df;
+        exponentiel *de;
+
+        switch(index)
+        {
+        case 1 :
+
+            df = gd->AjouterFonction();
+            df->EcrireBorneInf(FONCTIONMIN);
+            df->EcrireBorneSup(FONCTIONMAX);
+            df->EcrirePas(TirerAuSort(PASMINMATH,PASMAXMATH));
+            gd->Ecrire(
+                        df,
+                        TirerAuSort(1,2),
+                        TirerCouleurAuSort(),
+                        ECHELLEMATHX,
+                        ECHELLEMATHY,
+                        0,
+                        TirerAuSort(-TRANSLATIONFONCTIONYMAX,TRANSLATIONFONCTIONYMAX)
+                        );
+            break;
+
+        case 2:
+
+            dp = gd->AjouterPuissance2();
+            dp->EcrireBorneInf(PUISSANCE2MIN);
+            dp->EcrireBorneSup(PUISSANCE2MAX);
+            dp->EcrirePas(TirerAuSort(PASMINMATH,PASMAXMATH));
+            gd->Ecrire(
+                        dp,
+                        TirerAuSort(1,2),
+                        TirerCouleurAuSort(),
+                        ECHELLEMATHX,
+                        ECHELLEMATHY,
+                        0,
+                        TirerAuSort(-TRANSLATIONPUISSANCE2YMAX,TRANSLATIONPUISSANCE2YMAX)
+                        );
+            break;
+
+        case 3:
+
+            dr = gd->AjouterRacineCarre();
+            dr->EcrireBorneInf(RACINEMIN);
+            dr->EcrireBorneSup(RACINEMAX);
+            dr->EcrirePas(TirerAuSort(PASMINMATH,PASMAXMATH));
+            gd->Ecrire(
+                        dr,
+                        TirerAuSort(1,2),
+                        TirerCouleurAuSort(),
+                        ECHELLEMATHX,
+                        ECHELLEMATHY,
+                        0,
+                        TirerAuSort(-TRANSLATIONRACINEYMAX,TRANSLATIONRACINEYMAX)
+                        );
+            break;
+
+        case 4:
+
+            de = gd->AjouterExponentiel();
+            de->EcrireBorneInf(EXPONENTIELMIN);
+            de->EcrireBorneSup(EXPONENTIELMAX);
+            de->EcrirePas(TirerAuSort(PASMINMATH,PASMAXMATH));
+            gd->Ecrire(
+                        de,
+                        TirerAuSort(1,2),
+                        TirerCouleurAuSort(),
+                        ECHELLEMATHX,
+                        ECHELLEMATHY,
+                        0,
+                        TirerAuSort(-TRANSLATIONEXPONENTIELYMAX,TRANSLATIONEXPONENTIELYMAX)
+                        );
+            break;
+        }
+    }
+
+    static void AjouterFormes(
+            gesdessin *gd,
+            const int index)
+    {
+        cercle *dc;
+        rectangle *dr;
+
+        switch(index)
+        {
+        case 1 :
+
+            dr = gd->AjouterRectangle();
+            dr->EcrireDimensions(TirerAuSort(LARGEURMIN,LARGEURMAX),TirerAuSort(HAUTEURMIN,HAUTEURMAX));
+            gd->Ecrire(
+                        dr,
+                        TirerAuSort(1,2),
+                        TirerCouleurAuSort(),
+                        ECHELLEFORMEX,
+                        ECHELLEFORMEY,
+                        0,
+                        TirerAuSort(-TRANSLATIONFORMEYMAX,TRANSLATIONFORMEYMAX)
+                        );
+            break;
+
+        case 2:
+
+            dc = gd->AjouterCercle();
+            dc->EcrireRayon(TirerAuSort(RAYONMIN,RAYONMAX));
+            dc->EcrirePas(TirerAuSort((double)0.1,(double)1));
+            gd->Ecrire(
+                        dc,
+                        TirerAuSort(1,2),
+                        TirerCouleurAuSort(),
+                        ECHELLEFORMEX,
+                        ECHELLEFORMEY,
+                        0,
+                        TirerAuSort(-TRANSLATIONFORMEYMAX,TRANSLATIONFORMEYMAX)
+                        );
+            break;
+        }
+    }
+
+// Fin éléments copiés
+*/
+
 static void ajouter(
         const int t,
         gesdessin *gd,
@@ -273,6 +429,54 @@ static void creerTraces(
     Reafficher(gd);
 }
 
+// Eléments copiés à 15h30
+    static bool SupprimerTrace(
+            const int t,
+            gesdessin *gd,
+            fcreation *fc,
+            int &sel)
+    {
+        char q[256];
+        int isupp;
+        bool ok;
+
+        ok = fcreation::confirmer(q);
+        if (ok==true)
+        {
+            isupp = sel;
+            EffacerSelection(gd,sel);
+            gd->Supprimer(isupp);
+            AfficherListe(t,gd,fc,sel);
+            Reafficher(gd);
+        }
+        return (ok);
+    }
+
+    static void DetruireTraces(
+            const int t,
+            gesdessin *gd,
+            fcreation *fc,
+            int &sel)
+    {
+        EffacerSelection(gd,sel);
+        gd->Supprimer();
+        EffacerListe(t,fc,sel);
+        AjouterRepere(t,gd);
+        AfficherListe(t,gd,fc,sel);
+        Reafficher(gd);
+    }
+
+    static void EffacerTraces(
+            const int t,
+            gesdessin *gd,
+            fcreation *fc,
+            const int sel)
+    {
+        gd->Effacer();
+        EffacerListe(t,fc,sel);
+    }
+
+// Fin éléments copiés
 
 
 //*******************************************
@@ -394,4 +598,62 @@ void ctrlcreation::afficherFenetreGraphique(const int index)
 void ctrlcreation::creerTrigos(const int index)
 {
     creerTraces(2, this->_fTrigo, this->_fc, this->_selectionTrigo, index);
+}
+
+void ctrlcreation::detruireTrigos(void)
+{
+    DetruireTraces(2,this->_fTrigo,this->_fc,this->_selectionTrigo);
+}
+
+void ctrlcreation::effacerTrigos(void)
+{
+    EffacerTraces(2,this->_fTrigo,this->_fc,this->_selectionTrigo);
+}
+
+void ctrlcreation::viderTrigos(void)
+{
+    SupprimerTrace(2,this->_fTrigo,this->_fc,this->_selectionTrigo);
+}
+
+
+
+void ctrlcreation::creerMaths(const int index)
+{
+    creerTraces(1, this->_fMath, this->_fc, this->_selectionMath, index);
+}
+
+void ctrlcreation::detruireMaths(void)
+{
+    DetruireTraces(1,this->_fMath,this->_fc,this->_selectionMath);
+}
+
+void ctrlcreation::effacerMaths(void)
+{
+    EffacerTraces(1,this->_fMath,this->_fc,this->_selectionMath);
+}
+
+void ctrlcreation::viderMaths(void)
+{
+    SupprimerTrace(1,this->_fMath,this->_fc,this->_selectionMath);
+}
+
+
+void ctrlcreation::creerGeo(const int index)
+{
+    creerTraces(3, this->_fGeo, this->_fc, this->_selectionGeo, index);
+}
+
+void ctrlcreation::detruireGeo(void)
+{
+    DetruireTraces(3,this->_fGeo,this->_fc,this->_selectionGeo);
+}
+
+void ctrlcreation::effacerGeo(void)
+{
+    EffacerTraces(3,this->_fGeo,this->_fc,this->_selectionGeo);
+}
+
+void ctrlcreation::viderGeo(void)
+{
+    SupprimerTrace(3,this->_fGeo,this->_fc,this->_selectionGeo);
 }
