@@ -544,6 +544,8 @@ void fcreation::CBCreer(void)
 
     if((index>=1) && (index<=2))
        this->_ctrlCreate->creerTrigos(index);
+    if((index>=3) && (index<=6))
+       this->_ctrlCreate->creerMaths(index);
 }
 
 void fcreation::CBParametrerLimites (void)
