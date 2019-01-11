@@ -174,6 +174,14 @@ void fcreation::recupParamsCosSin(int &np, double &vp)
     vp = this->ui->spinValeurPasTrigo->value();
 }
 
+void fcreation::recupParamsMaths(double &xmi, double &xma, double &vp)
+{
+    xmi = this->ui->spinXminMath->value();
+    xma = this->ui->spinXmaxMath->value();
+    vp = this->ui->spinValeurPasMath->value();
+}
+
+
 void fcreation::recupParamsCommuns(double &ex, double &ey,
                                    double &tx, double &ty, QColor &ct, int &et)
 {
@@ -188,6 +196,16 @@ void fcreation::recupParamsCommuns(double &ex, double &ey,
         ty = this->ui->spinTransYTrigo->value();
         ct = this->getCouleurCourbes();
         stret = this->ui->comboEpaisseurTrigo->currentText();
+        et=stret.toInt();
+    }
+    if((index>=3) && (index<=6))
+    {
+        ex = this->ui->spinEchelleXMath->value();
+        ey = this->ui->spinEchelleYMath->value();
+        tx = this->ui->spinTransXMath->value();
+        ty = this->ui->spinTransYMath->value();
+        ct = this->getCouleurCourbes();
+        stret = this->ui->comboEpaisseurMath->currentText();
         et=stret.toInt();
     }
 }

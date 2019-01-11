@@ -43,6 +43,7 @@ public:
 
     int verifChecked(void);
     void recupParamsCosSin(int&, double&);
+    void recupParamsMaths(double&, double&, double&);
     void recupParamsCommuns(double&, double&, double&, double&,
                             QColor&, int&);
     void initialiserTabTrigo(void);

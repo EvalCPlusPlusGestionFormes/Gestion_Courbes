@@ -225,69 +225,110 @@ static void AjouterMaths(
        racinecarre *dr;
        fonction *df;
        exponentiel *de;
+       double ex, ey, tx, ty, xmi, xma, vp;
+       QColor ct;
+       int et;
 
        switch(index)
        {
-       case 1 :
-           df = gd->AjouterFonction();
-           df->EcrireBorneInf(FONCTIONMIN);
-           df->EcrireBorneSup(FONCTIONMAX);
-           df->EcrirePas(TirerAuSort(PASMINMATH,PASMAXMATH));
-           gd->Ecrire(
-                       df,
-                       TirerAuSort(1,2),
-                       TirerCouleurAuSort(),
-                       ECHELLEMATHX,
-                       ECHELLEMATHY,
-                       0,
-                       TirerAuSort(-TRANSLATIONFONCTIONYMAX,TRANSLATIONFONCTIONYMAX)
-                       );
-           break;
-       case 2:
+       case 3:
+           fc->recupParamsCommuns(ex, ey, tx, ty, ct, et);
+           fc->recupParamsMaths(xmi, xma, vp);
            dp = gd->AjouterPuissance2();
-           dp->EcrireBorneInf(PUISSANCE2MIN);
-           dp->EcrireBorneSup(PUISSANCE2MAX);
-           dp->EcrirePas(TirerAuSort(PASMINMATH,PASMAXMATH));
+           //Xmin
+           dp->EcrireBorneInf(xmi);
+           //Xmax
+           dp->EcrireBorneSup(xma);
+           //Valeur du pas
+           dp->EcrirePas(vp);
            gd->Ecrire(
                        dp,
-                       TirerAuSort(1,2),
-                       TirerCouleurAuSort(),
-                       ECHELLEMATHX,
-                       ECHELLEMATHY,
-                       0,
-                       TirerAuSort(-TRANSLATIONPUISSANCE2YMAX,TRANSLATIONPUISSANCE2YMAX)
+                       //Epaisseur du tracé
+                       et,
+                       //Couleur
+                       ct,
+                       //Echelle en x
+                       ex,
+                       //Echelle en y
+                       ey,
+                       //Translation en x
+                       tx,
+                       //Translation en y
+                       ty
                        );
            break;
-       case 3:
+
+       case 4:
+           fc->recupParamsCommuns(ex, ey, tx, ty, ct, et);
+           fc->recupParamsMaths(xmi, xma, vp);
            dr = gd->AjouterRacineCarre();
-           dr->EcrireBorneInf(RACINEMIN);
-           dr->EcrireBorneSup(RACINEMAX);
-           dr->EcrirePas(TirerAuSort(PASMINMATH,PASMAXMATH));
+           dr->EcrireBorneInf(xmi);
+           dr->EcrireBorneSup(xma);
+           dr->EcrirePas(vp);
            gd->Ecrire(
                        dr,
-                       TirerAuSort(1,2),
-                       TirerCouleurAuSort(),
-                       ECHELLEMATHX,
-                       ECHELLEMATHY,
-                       0,
-                       TirerAuSort(-TRANSLATIONRACINEYMAX,TRANSLATIONRACINEYMAX)
+                       //Epaisseur du tracé
+                       et,
+                       //Couleur
+                       ct,
+                       //Echelle en x
+                       ex,
+                       //Echelle en y
+                       ey,
+                       //Translation en x
+                       tx,
+                       //Translation en y
+                       ty
                        );
            break;
-       case 4:
+
+       case 5 :
+           fc->recupParamsCommuns(ex, ey, tx, ty, ct, et);
+           fc->recupParamsMaths(xmi, xma, vp);
+           df = gd->AjouterFonction();
+           df->EcrireBorneInf(xmi);
+           df->EcrireBorneSup(xma);
+           df->EcrirePas(vp);
+           gd->Ecrire(
+                       df,
+                       //Epaisseur du tracé
+                       et,
+                       //Couleur
+                       ct,
+                       //Echelle en x
+                       ex,
+                       //Echelle en y
+                       ey,
+                       //Translation en x
+                       tx,
+                       //Translation en y
+                       ty
+                       );
+           break;
+
+       case 6:
+           fc->recupParamsCommuns(ex, ey, tx, ty, ct, et);
+           fc->recupParamsMaths(xmi, xma, vp);
            de = gd->AjouterExponentiel();
-           de->EcrireBorneInf(EXPONENTIELMIN);
-           de->EcrireBorneSup(EXPONENTIELMAX);
-           de->EcrirePas(TirerAuSort(PASMINMATH,PASMAXMATH));
+           de->EcrireBorneInf(xmi);
+           de->EcrireBorneSup(xma);
+           de->EcrirePas(vp);
            gd->Ecrire(
                        de,
-                       TirerAuSort(1,2),
-                       TirerCouleurAuSort(),
-                       ECHELLEMATHX,
-                       ECHELLEMATHY,
-                       0,
-                       TirerAuSort(-TRANSLATIONEXPONENTIELYMAX,TRANSLATIONEXPONENTIELYMAX)
+                       //Epaisseur du tracé
+                       et,
+                       //Couleur
+                       ct,
+                       //Echelle en x
+                       ex,
+                       //Echelle en y
+                       ey,
+                       //Translation en x
+                       tx,
+                       //Translation en y
+                       ty
                        );
-           break;
+           break;       
        }
 }
 
