@@ -1,0 +1,12 @@
+INPUT(
+./debug\cercle.o
+./debug\coldessins.o
+./debug\demicercle.o
+./debug\dessin.o
+./debug\ligne.o
+./debug\rectangle.o
+./debug\repere.o
+./debug\trace.o
+./debug\trigo.o
+./debug\testerdllcreer.o
+);

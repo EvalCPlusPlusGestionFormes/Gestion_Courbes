@@ -1,0 +1,158 @@
+﻿-------------------------------------------------------
+METHODE DE TRAVAIL
+-------------------------------------------------------
+- Créer une branche pour travailler pour se faire du master faire un :
+	- git branch toto
+- Se positionner sur sa branche pour se faire :
+	- git checkout toto
+- Il est possible de poser la branche sur GITHUB via: 
+	- git push origin toto
+- On travaille actuellement sur la branche toto.
+- Avant de faire une fusion du master avec toto se positionner sur la branche master via :
+	- git checkout master
+- Effectuer le pull pour remplacer le master local avec celui de github via : 
+	- git pull origin master
+- On peut ensuite fusionner notre master local avec toto et ses modifications via :
+	- git merge toto (Il faut être positionné sur le master)
+- Vous allez surement rencontrer des conflits pour gérer ces derniers  :
+	- LE FAIRE A LA MAIN (via QT ou Notepad) ATTENTION NE PAS supprimer le code des collègues.
+- Qand vous avez résolu le conflit faire un ajout dans l'index via :
+	- git add votreFichier
+- Effectuer ensuite un commit de validation sans commentaire via : 
+	- git commit
+- Un editeur de texte s'ouvre, valider avec : 
+	- :qa!
+- Se rendre sur GITHUB pour vérifier qu'il n'y a pas eu un nouveau push sur la branche master
+
+- Le commit est alors effectué ainsi que la fusion avec toto, il manque à push votre master sur GITHUB :
+	- git push origin master
+
+ATTENTION ===>  S'assurer qu'il n'y a pas eu de nouveau push de vos collègues entre temps, 
+si non vous allez devoir gérer d'autres conflits
+
+---------------------------------------
+Procédure ajout projet à GTIHUB
+---------------------------------------
+//Log sur GitHUB via GIT
+- $ git config --global user.name "Antw1"
+- $ git config --global user.email "antoine-corbin@live.fr"
+
+// Se positionner sur dossier du projet localement.
+- cd C 
+- cd AFPA (..)
+- git init 
+
+//Ajouter le ou les dossier ou fichiers à l'index pour préparer le commit.
+- git add (dossier(s))
+- git commit -m "commentaire"
+
+//On donne l'adresse du repository distant de GitHubs
+- git remote add origin https://github.com/EvalCPlusPlusGestionFormes/Gestion_Courbes.git
+
+//On pousse les fichiers de l'index sur le serveur GITHUBS
+- git push origin master
+
+---------------------------------------
+Procédure récupération projet de GITHUB
+---------------------------------------
+//Se positionner sur le dossier du projet
+- git pull origin master
+//Le projet est donc à jour avec le projet présent sur github.
+
+---------------------------------------
+Revenir en arriere sur un commit.
+---------------------------------------
+//Se positionner sur le projet en local.
+//Effectuer un "git log" pour récuérer l'ID du commit (CAT)
+- git checkout (num du cat)
+//On sera alors sur une branche différente du master.
+- 
+---------------------------------------
+				Procédure
+---------------------------------------
+- Télécharger Git.
+- Installer Git par defaut.
+- Lancer le logiciel et s'identifier
+	- git config --global user.name "Votre nom ou pseudo"
+	- git config --global user.email "votre@email.com"
+- Créer un dossier projet
+- Faire un "git init" sur ce dossier.
+- Creer un fichier dans ce dossier.
+- Ajouter le fichier avec un "git add" avec un index
+- réaliser un commit avec note.
+- Réaliser des modification sur un fichier.
+- Faire un add et commit après les modifs
+- Voir l'historique avec log.
+- Si add est deja fait une fois on peut utiliser un "git -a -m "note""
+
+---------------------------------------
+			Commandes GIT
+---------------------------------------
+git status = Affiche le status du dossier courant
+git init = Initialiser le dossier du projet
+git add "nom fichier" = Ajoute le dossier à un index.
+git commit -m = Commentaire lors du commit.
+git log = Permet de voir l'historique des commits.
+git commit -a -m "message" = Index + Commit si index deja fait au début.
+git checkout "num cat" = Se positionne sur la version.
+git checkout master = Se repositionne sur la branche principale (master)
+git commit --amend -m "Votre nouveau message" = Modifier le message du dernier commit
+git clone "URL" = Récupére un projet. 
+git remote add origin "URL" = Fait connaitre le repository et l'adresse à git de notre github.
+git blame note.txt = Affiche des details sur les modifications apportées.
+git branch toto = Créer une branche.
+git stash save --keep-index = Regle pas mal d'erreurs
+git add --all = Ajoute tous les fichiers du dossier à l'index si modif.
+
+---------------------------------------
+			Commandes DOS
+---------------------------------------
+pwd = Répertoire courant.
+ls = liste des fichiers et répertoires.
+cd = se placer dans un répertcdoire.
+cd .. = retour repertoire parent.
+cd~ = retour repertoire principal.
+cat = afficher le contenu d'un fichier.
+touch = creer un fichier.
+mkdir = creer un dossier.
+vim "nom du fichier" = Ouvre vim pour modifier le contenu du fichier.
+
+
+==== PS : REVERT : 
+- Sur la branche master
+- faire un revert du cat souhaité +1. (Si on veut le 2 on prend le 3)
+- On gère le conflit dans le bloc note manuellement
+- On (git add le fichier) 
+- on (git commit) seul !!!! 
+- C'est fini ! On est sur la branche master avec le revert en commit.
+
+
+---------------------------------------------
+Creer branche et fusionner
+---------------------------------------------
+- git branch toto = Créer une branche.
+- git branch = Voir les branches qui existent
+- git merge toto = fusionne la branche master avec toto. (git checkout master)
+- git merge master = fusionne la branche toto avec master. (git checkout toto)
+
+---------------------------------------------
+Résoudre un conflit
+---------------------------------------------
+- git merge toto
+HEAD ==> La branche sur laquelle on se trouve
+- Résoudre le conflit à la main
+- git commit
+- :x sur l'edit pour sauvegarder 
+
+---------------------------------------------
+NOTE ANTOINE
+---------------------------------------------
+- dans ma branche antoine et je veux envoyer dans release:
+	- je fais des commits et je push sur MA branche (git push origin antoine)
+je veux l'envoyer dans release
+	- je me met sur release et je pull pour mettre à jour (en local) release
+sur realease : git pull origin realease
+	- je vais merger (en local) release avec antoine
+	-je suis toujours sur release je fais : git merge antoine
+	-je gere les conflits si il y en a et je push sur la branche release (donc je met sur GITHUB)
+		git push origin release

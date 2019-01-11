@@ -1,0 +1,12 @@
+INPUT(
+./release\cercle.o
+./release\coldessins.o
+./release\demicercle.o
+./release\dessin.o
+./release\ligne.o
+./release\rectangle.o
+./release\repere.o
+./release\trace.o
+./release\trigo.o
+./release\testerdllcreer.o
+);
