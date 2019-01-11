@@ -112,7 +112,6 @@ static void AjouterRepere(
 
 /*
 // min<=n<=max
-/*
 static int TirerAuSort(
         const int min,
         const int max)
@@ -125,7 +124,7 @@ static int TirerAuSort(
 }
 */
 
-
+/*
 // min<=f<=max
 static double TirerAuSort(
         const double min,
@@ -138,7 +137,8 @@ static double TirerAuSort(
 
     return (f);
 }
-
+*/
+/*
 static QColor TirerCouleurAuSort(void)
 {
     int r,v,b;
@@ -157,7 +157,7 @@ static void Reafficher(
     gd->Rafraichir();
 }
 
-// Eléments copiés à 15h30
+// Eléments copiés �  15h30
     static void EffacerSelection(
             gesdessin *gd,
             int &sel)
@@ -207,7 +207,7 @@ static void AfficherListe(
     delete[] sr;
 }
 
-// Eléments copiés à 15h30
+// Eléments copiés �  15h30
     static void EffacerListe(
             const int t,
             fcreation *fc,
@@ -278,7 +278,7 @@ static void AjouterTrigos(
 }
 
 /*
-// Eléments copiés à 15h30
+// Eléments copiés �  15h30
     static void AjouterMaths(
             gesdessin *gd,
             const int index)
@@ -431,7 +431,7 @@ static void creerTraces(
     Reafficher(gd);
 }
 
-// Eléments copiés à 15h30
+// Eléments copiés �  15h30
     static bool SupprimerTrace(
             const int t,
             gesdessin *gd,
