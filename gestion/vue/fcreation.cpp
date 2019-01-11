@@ -586,6 +586,7 @@ void fcreation::CBVider(void)
 
         if (reponse == QMessageBox::Yes)
             {
+                this->_ctrlCreate->detruireTrigos();
                 QMessageBox::information(this, "Commande effectuée", "La liste a bien été vidé");
             }
         else if (reponse == QMessageBox::No)
@@ -599,6 +600,7 @@ void fcreation::CBVider(void)
 
         if (reponse == QMessageBox::Yes)
             {
+                this->_ctrlCreate->detruireMaths();
                 QMessageBox::information(this, "Commande effectuée", "La liste a bien été vidé");
             }
         else if (reponse == QMessageBox::No)
@@ -612,7 +614,7 @@ void fcreation::CBVider(void)
 
         if (reponse == QMessageBox::Yes)
             {
-                ui->LstGeo->clear();
+                this->_ctrlCreate->detruireGeo();
                 QMessageBox::information(this, "Commande effectuée", "La liste a bien été vidé");
             }
         else if (reponse == QMessageBox::No)
