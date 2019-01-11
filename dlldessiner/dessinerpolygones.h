@@ -171,9 +171,6 @@ public:
     void EcrireNom(const char *nom)
     {this->_fd->setWindowTitle(QString(nom));}
 
-    void MasquerFenetre(void){this->_fd->MasquerFenetre();}
-    void AfficherFenetre(void){this->_fd->AfficherFenetre();}
-
     void Montrer(void)
     {this->_fd->show();}
 

@@ -111,6 +111,7 @@ static void AjouterRepere(
 }
 
 // min<=n<=max
+/*
 static int TirerAuSort(
         const int min,
         const int max)
@@ -121,6 +122,7 @@ static int TirerAuSort(
             (rand()%(max-min+1));
     return (n);
 }
+*/
 
 /*
 // min<=f<=max

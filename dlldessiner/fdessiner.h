@@ -199,12 +199,6 @@ public:
     // Effacer la fenetre de dessin
     void Effacer(void);
 
-    //Masque une fenetre.
-    void MasquerFenetre(void){this->hide();}
-
-    //Afficher une fenetre.
-    void AfficherFenetre(void){this->show();}
-
     // Modification de la taille
     // de la zone de dessin
     static void DefinirRatioScene(
