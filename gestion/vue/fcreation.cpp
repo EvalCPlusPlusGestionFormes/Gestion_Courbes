@@ -198,10 +198,10 @@ void fcreation::initialiserTabTrigo(void)
     this->ui->spinPeriodeTrigo->setValue(1);
     this->ui->spinValeurPasTrigo->setRange(0.1,1.5);
     this->ui->spinValeurPasTrigo->setValue(0.1);
-    this->ui->spinEchelleXTrigo->setRange(10,12);
-    this->ui->spinEchelleXTrigo->setValue(10);
-    this->ui->spinEchelleYTrigo->setRange(34,37);
-    this->ui->spinEchelleYTrigo->setValue(34);
+    this->ui->spinEchelleXTrigo->setRange(10.0,12.0);
+    this->ui->spinEchelleXTrigo->setValue(10.0);
+    this->ui->spinEchelleYTrigo->setRange(34.0,37.0);
+    this->ui->spinEchelleYTrigo->setValue(34.0);
     this->ui->spinTransXTrigo->setRange(0,0);
     this->ui->spinTransXTrigo->setValue(0);
     this->ui->spinTransYTrigo->setRange(-1.0,1.0);
@@ -219,16 +219,16 @@ void fcreation::initialiserTabMath(int index)
     //Puissance 2
     case 3:
         //Parametrage des limites
-        this->ui->spinXminMath->setRange(-1,-1.25);
-        this->ui->spinXminMath->setValue(-1);
-        this->ui->spinXmaxMath->setRange(1,1.25);
-        this->ui->spinXmaxMath->setValue(1);
+        this->ui->spinXminMath->setRange(-1.0,-1.25);
+        this->ui->spinXminMath->setValue(-1.0);
+        this->ui->spinXmaxMath->setRange(1.0,1.25);
+        this->ui->spinXmaxMath->setValue(1.0);
         this->ui->spinValeurPasMath->setRange(0.1,1.0);
         this->ui->spinValeurPasMath->setValue(0.1);
-        this->ui->spinEchelleXMath->setRange(34,37);
-        this->ui->spinEchelleXMath->setValue(34);
-        this->ui->spinEchelleYMath->setRange(34,37);
-        this->ui->spinEchelleYMath->setValue(34);
+        this->ui->spinEchelleXMath->setRange(34.0,37.0);
+        this->ui->spinEchelleXMath->setValue(34.0);
+        this->ui->spinEchelleYMath->setRange(34.0,37.0);
+        this->ui->spinEchelleYMath->setValue(34.0);
         this->ui->spinTransXMath->setRange(0,0);
         this->ui->spinTransXMath->setValue(0);
         this->ui->spinTransYMath->setRange(-0.5,0.5);
@@ -243,20 +243,20 @@ void fcreation::initialiserTabMath(int index)
         //Racine Carré
     case 4:
         //Parametrage des limites
-        this->ui->spinXminMath->setRange(0,1);
-        this->ui->spinXminMath->setValue(0);
-        this->ui->spinXmaxMath->setRange(2,3);
-        this->ui->spinXmaxMath->setValue(2);
+        this->ui->spinXminMath->setRange(0.0,1.0);
+        this->ui->spinXminMath->setValue(0.0);
+        this->ui->spinXmaxMath->setRange(2.0,3.0);
+        this->ui->spinXmaxMath->setValue(2.0);
         this->ui->spinValeurPasMath->setRange(0.1,1.0);
         this->ui->spinValeurPasMath->setValue(0.1);
-        this->ui->spinEchelleXMath->setRange(34,37);
-        this->ui->spinEchelleXMath->setValue(34);
-        this->ui->spinEchelleYMath->setRange(34,37);
-        this->ui->spinEchelleYMath->setValue(37);
+        this->ui->spinEchelleXMath->setRange(34.0,37.0);
+        this->ui->spinEchelleXMath->setValue(34.0);
+        this->ui->spinEchelleYMath->setRange(34.0,37.0);
+        this->ui->spinEchelleYMath->setValue(37.0);
         this->ui->spinTransXMath->setRange(0,0);
         this->ui->spinTransXMath->setValue(0);
         this->ui->spinTransYMath->setRange(-2.0,2.0);
-        this->ui->spinTransYMath->setValue(2.0);
+        this->ui->spinTransYMath->setValue(-2.0);
         this->ui->BtnCouleurMath->setStyleSheet("background-color: rgb(0, 0, 0);");
         this->setCouleurCourbes(Qt::black);
 
@@ -267,16 +267,16 @@ void fcreation::initialiserTabMath(int index)
         //fonction
     case 5:
         //Parametrage des limites
-        this->ui->spinXminMath->setRange(0,1);
-        this->ui->spinXminMath->setValue(0);
-        this->ui->spinXmaxMath->setRange(1,2);
-        this->ui->spinXmaxMath->setValue(1);
+        this->ui->spinXminMath->setRange(0.0,1.0);
+        this->ui->spinXminMath->setValue(0.0);
+        this->ui->spinXmaxMath->setRange(1.0,2.0);
+        this->ui->spinXmaxMath->setValue(1.0);
         this->ui->spinValeurPasMath->setRange(0.1,1.0);
         this->ui->spinValeurPasMath->setValue(0.1);
-        this->ui->spinEchelleXMath->setRange(34,37);
-        this->ui->spinEchelleXMath->setValue(34);
-        this->ui->spinEchelleYMath->setRange(34,37);
-        this->ui->spinEchelleYMath->setValue(34);
+        this->ui->spinEchelleXMath->setRange(34.0,37.0);
+        this->ui->spinEchelleXMath->setValue(34.0);
+        this->ui->spinEchelleYMath->setRange(34.0,37.0);
+        this->ui->spinEchelleYMath->setValue(34.0);
         this->ui->spinTransXMath->setRange(0,0);
         this->ui->spinTransXMath->setValue(0);
         this->ui->spinTransYMath->setRange(-0.5,0.5);
@@ -297,10 +297,10 @@ void fcreation::initialiserTabMath(int index)
         this->ui->spinXmaxMath->setValue(0.1);
         this->ui->spinValeurPasMath->setRange(0.1,1.0);
         this->ui->spinValeurPasMath->setValue(0.1);
-        this->ui->spinEchelleXMath->setRange(34,37);
-        this->ui->spinEchelleXMath->setValue(34);
-        this->ui->spinEchelleYMath->setRange(34,37);
-        this->ui->spinEchelleYMath->setValue(34);
+        this->ui->spinEchelleXMath->setRange(34.0,37.0);
+        this->ui->spinEchelleXMath->setValue(34.0);
+        this->ui->spinEchelleYMath->setRange(34.0,37.0);
+        this->ui->spinEchelleYMath->setValue(34.0);
         this->ui->spinTransXMath->setRange(0,0);
         this->ui->spinTransXMath->setValue(0);
         this->ui->spinTransYMath->setRange(-0.5,0.5);
@@ -327,8 +327,8 @@ void fcreation::initialiserTabGeo(int index)
 
         //Parametrage des limites
 
-        this->ui->spinLargeurRayonGeo->setRange(25.00,37.5);
-        this->ui->spinLargeurRayonGeo->setValue(25.00);
+        this->ui->spinLargeurRayonGeo->setRange(25.0,37.5);
+        this->ui->spinLargeurRayonGeo->setValue(25.0);
         this->ui->spinHauteurPasGeo->setRange(0.1,1.0);
         this->ui->spinHauteurPasGeo->setValue(0.1);
         this->ui->spinEchelleXGeo->setRange(1.0,1.5);
@@ -353,14 +353,14 @@ void fcreation::initialiserTabGeo(int index)
         this->ui->lblLargeurRayonGeo->setText("Largeur");
 
         //Parametrage des limites
-        this->ui->spinLargeurRayonGeo->setRange(25.00,50.00);
-        this->ui->spinLargeurRayonGeo->setValue(25.00);
-        this->ui->spinHauteurPasGeo->setRange(50.00,100.00);
-        this->ui->spinHauteurPasGeo->setValue(50.00);
+        this->ui->spinLargeurRayonGeo->setRange(25.0,50.0);
+        this->ui->spinLargeurRayonGeo->setValue(25.0);
+        this->ui->spinHauteurPasGeo->setRange(50.0,100.0);
+        this->ui->spinHauteurPasGeo->setValue(50.0);
         this->ui->spinEchelleXGeo->setRange(1.0,1.5);
         this->ui->spinEchelleXGeo->setValue(1.0);
         this->ui->spinEchelleYGeo->setRange(0.75,1.5);
-        this->ui->spinEchelleYGeo->setValue(1.5);
+        this->ui->spinEchelleYGeo->setValue(0.75);
         this->ui->spinTransXGeo->setRange(0,0);
         this->ui->spinTransXGeo->setValue(0);
         this->ui->spinTransYGeo->setRange(-12.0,12.0);
@@ -372,6 +372,115 @@ void fcreation::initialiserTabGeo(int index)
         this->ui->comboEpaisseurGeo->setCurrentIndex(0);
         break;
 }
+}
+
+void fcreation::initialiserTips(int index)
+{
+    switch (index)
+    {
+    case 1&2://Cosinus et Sinus
+        {
+        this->ui->spinPeriodeTrigo->setToolTip("Nombre de périodes : entier compris entre 1 et 3");
+        this->ui->spinValeurPasTrigo->setToolTip("Valeur du pas: décimale comprise entre 0.1 et 1.5");
+        this->ui->spinEchelleXTrigo->setToolTip("Échelle en X: décimale comprise entre 10 et 12");
+        this->ui->spinEchelleYTrigo->setToolTip("Échelle en Y: décimale comprise entre 34 et 37");
+        this->ui->spinTransXTrigo->setToolTip("Translation en X: décimale toujours = 0");
+        this->ui->spinTransYTrigo->setToolTip("Translation en Y: décimale comprise entre -1 et 1.");
+        this->ui->BtnCouleurTrigo->setToolTip("Couleur de tracé: couleur quelconque");
+        this->ui->comboEpaisseurTrigo->setToolTip("Épaisseur de tracé: entier compris entre 1 et 2");
+        }
+
+        break;
+
+    case 3://Puissance de 2
+        {
+        this->ui->spinXminMath->setToolTip("xmin (valeur x de départ de la génération): décimale comprise entre -1 et -1.25");
+        this->ui->spinXmaxMath->setToolTip("xmax (valeur x de fin de la génération): décimale comprise entre 1 et 1.25");
+        this->ui->spinValeurPasTrigo->setToolTip("Valeur du pas: décimale comprise entre 0.1 et 1.0");
+        this->ui->spinEchelleXMath->setToolTip("Échelle en X: décimale comprise entre 34 et 37");
+        this->ui->spinEchelleYMath->setToolTip("Échelle en Y: décimale comprise entre 34 et 37");
+        this->ui->spinTransXMath->setToolTip("Translation en X: décimale toujours = 0");
+        this->ui->spinTransYMath->setToolTip("Translation en Y: décimale comprise entre -0.5 et 0.5");
+        this->ui->BtnCouleurTrigo->setToolTip("Couleur de tracé: couleur quelconque");
+        this->ui->comboEpaisseurTrigo->setToolTip("Épaisseur de tracé: entier compris entre 1 et 2");
+        }
+
+        break;
+
+    case 4://Racine Carree
+        {
+        this->ui->spinXminMath->setToolTip("xmin (valeur x de départ de la génération): décimale comprise entre 0 et 1");
+        this->ui->spinXmaxMath->setToolTip("xmax (valeur x de fin de la génération): décimale comprise entre 2 et 3");
+        this->ui->spinValeurPasTrigo->setToolTip("Valeur du pas: décimale comprise entre 0.1 et 1.0");
+        this->ui->spinEchelleXMath->setToolTip("Échelle en X: décimale comprise entre 34 et 37");
+        this->ui->spinEchelleYMath->setToolTip("Échelle en Y: décimale comprise entre 34 et 37");
+        this->ui->spinTransXMath->setToolTip("Translation en X: décimale toujours = 0");
+        this->ui->spinTransYMath->setToolTip("Translation en Y: décimale comprise entre -2 et 2");
+        this->ui->BtnCouleurTrigo->setToolTip("Couleur de tracé: couleur quelconque");
+        this->ui->comboEpaisseurTrigo->setToolTip("Épaisseur de tracé: entier compris entre 1 et 2");
+        }
+
+        break;
+
+    case 5://Fonction
+        {
+        this->ui->spinXminMath->setToolTip("xmin (valeur x de départ de la génération): décimale comprise entre 0 et 1");
+        this->ui->spinXmaxMath->setToolTip("xmax (valeur x de fin de la génération): décimale comprise entre 1 et 2");
+        this->ui->spinValeurPasTrigo->setToolTip("Valeur du pas: décimale comprise entre 0.1 et 1.0");
+        this->ui->spinEchelleXMath->setToolTip("Échelle en X: décimale comprise entre 34 et 37");
+        this->ui->spinEchelleYMath->setToolTip("Échelle en Y: décimale comprise entre 34 et 37");
+        this->ui->spinTransXMath->setToolTip("Translation en X: décimale toujours = 0");
+        this->ui->spinTransYMath->setToolTip("Translation en Y: décimale comprise entre -0.5 et 0.5");
+        this->ui->BtnCouleurTrigo->setToolTip("Couleur de tracé: couleur quelconque");
+        this->ui->comboEpaisseurTrigo->setToolTip("Épaisseur de tracé: entier compris entre 1 et 2");
+        }
+
+        break;
+
+    case 6://Exponentiel
+        {
+        this->ui->spinXminMath->setToolTip("xmin (valeur x de départ de la génération): décimale comprise entre -2 et -1");
+        this->ui->spinXmaxMath->setToolTip("xmax (valeur x de fin de la génération): décimale comprise entre 0.1 et 1");
+        this->ui->spinValeurPasTrigo->setToolTip("Valeur du pas: décimale comprise entre 0.1 et 1.0");
+        this->ui->spinEchelleXMath->setToolTip("Échelle en X: décimale comprise entre 34 et 37");
+        this->ui->spinEchelleYMath->setToolTip("Échelle en Y: décimale comprise entre 34 et 37");
+        this->ui->spinTransXMath->setToolTip("Translation en X: décimale toujours = 0");
+        this->ui->spinTransYMath->setToolTip("Translation en Y: décimale comprise entre -0.5 et 0.5");
+        this->ui->BtnCouleurTrigo->setToolTip("Couleur de tracé: couleur quelconque");
+        this->ui->comboEpaisseurTrigo->setToolTip("Épaisseur de tracé: entier compris entre 1 et 2");
+        }
+
+        break;
+
+    case 7://Cercle
+        {
+        this->ui->spinLargeurRayonGeo->setToolTip("Rayon : décimale comprise entre 25 et 37.5");
+        this->ui->spinHauteurPasGeo->setToolTip("Valeur du pas: décimale comprise entre 0.1 et 1.0");
+        this->ui->spinEchelleXGeo->setToolTip("Échelle en X: décimale comprise entre 1 et 1.5");
+        this->ui->spinEchelleYGeo->setToolTip("Échelle en Y: décimale comprise entre 0.75 et 1.5");
+        this->ui->spinTransXGeo->setToolTip("Translation en X: décimale toujours = 0");
+        this->ui->spinTransYGeo->setToolTip("Translation en Y: décimale comprise entre -12 et 12.");
+        this->ui->BtnCouleurGeo->setToolTip("Couleur de tracé: couleur quelconque");
+        this->ui->comboEpaisseurGeo->setToolTip("Épaisseur de tracé: entier compris entre 1 et 2");
+        }
+
+        break;
+
+    case 8://Rectangle
+        {
+        this->ui->spinLargeurRayonGeo->setToolTip("Largeur : décimale comprise entre 25 et 50");
+        this->ui->spinHauteurPasGeo->setToolTip("Hauteur : décimale comprise entre 50 et 100");
+        this->ui->spinEchelleXGeo->setToolTip("Échelle en X: décimale comprise entre 1 et 1.5");
+        this->ui->spinEchelleYGeo->setToolTip("Échelle en Y: décimale comprise entre 0.75 et 1.5");
+        this->ui->spinTransXGeo->setToolTip("Translation en X: décimale toujours = 0");
+        this->ui->spinTransYGeo->setToolTip("Translation en Y: décimale comprise entre -12 et 12.");
+        this->ui->BtnCouleurGeo->setToolTip("Couleur de tracé: couleur quelconque");
+        this->ui->comboEpaisseurGeo->setToolTip("Épaisseur de tracé: entier compris entre 1 et 2");
+        }
+
+        break;
+
+    }
 }
 
 //*******************************************
@@ -555,6 +664,7 @@ void fcreation::CBParametrerLimites (void)
 if ((index>=1) && (index<=2))
   {
             this->initialiserTabTrigo();
+            this->initialiserTips(index);
   }
 
     //********************************************
@@ -562,7 +672,8 @@ if ((index>=1) && (index<=2))
     //********************************************
 if ((index>=3) && (index<=6))
  {
-    this->initialiserTabMath(index);
+            this->initialiserTabMath(index);
+            this->initialiserTips(index);
 
   }
 
@@ -572,7 +683,8 @@ if ((index>=3) && (index<=6))
     //********************************************
 if ((index>=7) && (index<=8))
 {
-    this->initialiserTabGeo(index);
+            this->initialiserTabGeo(index);
+            this->initialiserTips(index);
 }
 
 }

@@ -492,9 +492,6 @@ void ctrlcreation::initialiser(void)
     this->_fMath = new gesdessin(LARGEUR,HAUTEUR,COLFOND);
     this->_fGeo = new gesdessin(LARGEUR,HAUTEUR,COLFOND);
 
-    //Ajout du Logo pour la fenetre
-    this->_fc->setWindowIcon(QIcon(QCoreApplication::applicationDirPath()+"/Logo_Eval.jpg"));
-
     //Postion de la fenetre principale.
     Positionner(this->_fc,0,0);
 

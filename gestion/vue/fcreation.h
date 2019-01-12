@@ -48,6 +48,7 @@ public:
     void initialiserTabTrigo(void);
     void initialiserTabMath(int);
     void initialiserTabGeo(int);
+    void initialiserTips(int);
 
 private:
     //*******************************************

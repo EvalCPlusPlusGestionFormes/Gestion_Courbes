@@ -57,3 +57,6 @@ else:unix: LIBS += -L./../build-dlldessiner-Desktop_Qt_5_7_0_MinGW_32bit-Debug/ 
 
 INCLUDEPATH += ./../dlldessiner
 DEPENDPATH += ./../dlldessiner
+
+RESOURCES += \
+    logo_gestion_formes.qrc
