@@ -174,6 +174,19 @@ void fcreation::recupParamsCosSin(int &np, double &vp)
     vp = this->ui->spinValeurPasTrigo->value();
 }
 
+void fcreation::recupParamsMaths(double &xmi, double &xma, double &vp)
+{
+    xmi = this->ui->spinXminMath->value();
+    xma = this->ui->spinXmaxMath->value();
+    vp = this->ui->spinValeurPasMath->value();
+}
+
+void fcreation::recupParamsGeo(double &LarRay, double &HautPas)
+{
+    LarRay = this->ui->spinLargeurRayonGeo->value();
+    HautPas = this->ui->spinHauteurPasGeo->value();
+}
+
 void fcreation::recupParamsCommuns(double &ex, double &ey,
                                    double &tx, double &ty, QColor &ct, int &et)
 {
@@ -188,6 +201,26 @@ void fcreation::recupParamsCommuns(double &ex, double &ey,
         ty = this->ui->spinTransYTrigo->value();
         ct = this->getCouleurCourbes();
         stret = this->ui->comboEpaisseurTrigo->currentText();
+        et=stret.toInt();
+    }
+    if((index>=3) && (index<=6))
+    {
+        ex = this->ui->spinEchelleXMath->value();
+        ey = this->ui->spinEchelleYMath->value();
+        tx = this->ui->spinTransXMath->value();
+        ty = this->ui->spinTransYMath->value();
+        ct = this->getCouleurCourbes();
+        stret = this->ui->comboEpaisseurMath->currentText();
+        et=stret.toInt();
+    }
+    if((index>=7) && (index<=8))
+    {
+        ex = this->ui->spinEchelleXGeo->value();
+        ey = this->ui->spinEchelleYGeo->value();
+        tx = this->ui->spinTransXGeo->value();
+        ty = this->ui->spinTransYGeo->value();
+        ct = this->getCouleurCourbes();
+        stret = this->ui->comboEpaisseurGeo->currentText();
         et=stret.toInt();
     }
 }
@@ -607,6 +640,24 @@ void fcreation::initialiserCB(void)
                 this,
                 SLOT (CBParametrerLimites())
                 );
+    QObject::connect(
+                this->ui->LstTrigo,
+                SIGNAL(currentRowChanged(int)),
+                this,
+                SLOT(CBLigneSelectionnee(int))
+                );
+    QObject::connect(
+                this->ui->LstMath,
+                SIGNAL(currentRowChanged(int)),
+                this,
+                SLOT(CBLigneSelectionnee(int))
+                );
+    QObject::connect(
+                this->ui->LstGeo,
+                SIGNAL(currentRowChanged(int)),
+                this,
+                SLOT(CBLigneSelectionnee(int))
+                );
 }
 
 
@@ -653,8 +704,17 @@ void fcreation::CBCreer(void)
 
     if((index>=1) && (index<=2))
        this->_ctrlCreate->creerTrigos(index);
+    if((index>=3) && (index<=6))
+       this->_ctrlCreate->creerMaths(index);
+    if((index>=7) && (index<=8))
+       this->_ctrlCreate->creerGeo(index);
 }
-
+void fcreation::CBLigneSelectionnee(int l)
+{
+    int index;
+    index=this->verifChecked();
+    this->_ctrlCreate->afficherSelection(l,index);
+}
 void fcreation::CBParametrerLimites (void)
 {
     int index = this->verifChecked();
@@ -676,7 +736,6 @@ if ((index>=3) && (index<=6))
             this->initialiserTips(index);
 
   }
-
 
     //********************************************
     //Parametrage des valeurs Mini et Maxi pour les Forme Geo

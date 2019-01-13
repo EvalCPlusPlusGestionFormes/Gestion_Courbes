@@ -43,6 +43,8 @@ public:
 
     int verifChecked(void);
     void recupParamsCosSin(int&, double&);
+    void recupParamsMaths(double&, double&, double&);
+    void recupParamsGeo(double&, double&);
     void recupParamsCommuns(double&, double&, double&, double&,
                             QColor&, int&);
     void initialiserTabTrigo(void);
@@ -73,6 +75,7 @@ private slots:
     void CBVider(void);
     void CBChoisirCouleur (void);
     void CBParametrerLimites (void);
+    void CBLigneSelectionnee(int);
 };
 
 #endif // FCREATION_H

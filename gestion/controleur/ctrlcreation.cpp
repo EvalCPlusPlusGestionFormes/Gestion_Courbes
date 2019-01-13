@@ -67,7 +67,7 @@ static void Positionner(
     f->move(x,y);
 }
 
-//********  Ajout d'un repère ********
+//********  Ajout d'un rep�rere ********
 static void AjouterRepere(
         const int t,
         gesdessin *gd)
@@ -157,8 +157,7 @@ static void Reafficher(
     gd->Rafraichir();
 }
 
-// Eléments copiés �  15h30
-    static void EffacerSelection(
+static void EffacerSelection(
             gesdessin *gd,
             int &sel)
     {
@@ -170,7 +169,20 @@ static void Reafficher(
         }
     }
 
-// Fin éléments copiés
+static void AfficherSelection(
+            gesdessin *gd,
+            int &sel,
+            int l)
+    {
+        if (l!=-1)
+        {
+            EffacerSelection(gd, sel);
+            sel = l;
+            gd->Colorer(sel,Qt::red);
+            gd->EcrireEpaisseur(sel,3);
+            Reafficher(gd);
+        }
+    }
 
 static void toString(
         gesdessin *gd,
@@ -207,8 +219,7 @@ static void AfficherListe(
     delete[] sr;
 }
 
-// Eléments copiés �  15h30
-    static void EffacerListe(
+static void EffacerListe(
             const int t,
             fcreation *fc,
             const int index)
@@ -217,7 +228,116 @@ static void AfficherListe(
         fc->Selectionner(t,index);
     }
 
-// Fin éléments copiés
+static void AjouterMaths(
+           gesdessin *gd,
+           fcreation *fc,
+           const int index)
+   {
+       puissance2 *dp;
+       racinecarre *dr;
+       fonction *df;
+       exponentiel *de;
+       double ex, ey, tx, ty, xmi, xma, vp;
+       QColor ct;
+       int et;
+
+       fc->recupParamsCommuns(ex, ey, tx, ty, ct, et);
+       fc->recupParamsMaths(xmi, xma, vp);
+
+       switch(index)
+       {
+       case 3:
+           dp = gd->AjouterPuissance2();
+           //Xmin
+           dp->EcrireBorneInf(xmi);
+           //Xmax
+           dp->EcrireBorneSup(xma);
+           //Valeur du pas
+           dp->EcrirePas(vp);
+           gd->Ecrire(
+                       dp,
+                       //Epaisseur du trac�
+                       et,
+                       //Couleur
+                       ct,
+                       //Echelle en x
+                       ex,
+                       //Echelle en y
+                       ey,
+                       //Translation en x
+                       tx,
+                       //Translation en y
+                       ty
+                       );
+           break;
+
+       case 4:
+           dr = gd->AjouterRacineCarre();
+           dr->EcrireBorneInf(xmi);
+           dr->EcrireBorneSup(xma);
+           dr->EcrirePas(vp);
+           gd->Ecrire(
+                       dr,
+                       //Epaisseur du trac�
+                       et,
+                       //Couleur
+                       ct,
+                       //Echelle en x
+                       ex,
+                       //Echelle en y
+                       ey,
+                       //Translation en x
+                       tx,
+                       //Translation en y
+                       ty
+                       );
+           break;
+
+       case 5 :
+           df = gd->AjouterFonction();
+           df->EcrireBorneInf(xmi);
+           df->EcrireBorneSup(xma);
+           df->EcrirePas(vp);
+           gd->Ecrire(
+                       df,
+                       //Epaisseur du trac�
+                       et,
+                       //Couleur
+                       ct,
+                       //Echelle en x
+                       ex,
+                       //Echelle en y
+                       ey,
+                       //Translation en x
+                       tx,
+                       //Translation en y
+                       ty
+                       );
+           break;
+
+       case 6:
+           de = gd->AjouterExponentiel();
+           de->EcrireBorneInf(xmi);
+           de->EcrireBorneSup(xma);
+           de->EcrirePas(vp);
+           gd->Ecrire(
+                       de,
+                       //Epaisseur du trac�
+                       et,
+                       //Couleur
+                       ct,
+                       //Echelle en x
+                       ex,
+                       //Echelle en y
+                       ey,
+                       //Translation en x
+                       tx,
+                       //Translation en y
+                       ty
+                       );
+           break;       
+       }
+}
 
 static void AjouterTrigos(
         gesdessin *gd,
@@ -230,11 +350,11 @@ static void AjouterTrigos(
     QColor ct;
     int et, np;
 
+    fc->recupParamsCommuns(ex, ey, tx, ty, ct, et);
 
     switch(index)
     {
-    case 1 :
-        fc->recupParamsCommuns(ex, ey, tx, ty, ct, et);
+    case 1 : 
         fc->recupParamsCosSin(np, vp);
         dc = gd->AjouterCosinus();
 
@@ -258,7 +378,6 @@ static void AjouterTrigos(
         break;
 
     case 2:
-        fc->recupParamsCommuns(ex, ey, tx, ty, ct, et);
         fc->recupParamsCosSin(np, vp);
         ds = gd->AjouterSinus();
 
@@ -277,133 +396,64 @@ static void AjouterTrigos(
     }
 }
 
-/*
-// Eléments copiés �  15h30
-    static void AjouterMaths(
-            gesdessin *gd,
-            const int index)
+static void AjouterGeo(
+        gesdessin *gd,
+        fcreation *fc,
+        const int index)
+{
+    cercle *dc;
+    rectangle *dr;
+    double ex, ey, tx, ty, LarRay, HautPas;
+    QColor ct;
+    int et;
+
+    fc->recupParamsCommuns(ex, ey, tx, ty, ct, et);
+    fc->recupParamsGeo(LarRay, HautPas);
+
+    switch(index)
     {
-        puissance2 *dp;
-        racinecarre *dr;
-        fonction *df;
-        exponentiel *de;
+    case 7:
+        dc = gd->AjouterCercle();
+        dc->EcrireRayon(LarRay);
+        dc->EcrirePas(HautPas);
+        gd->Ecrire(
+                    dc,
+                    //Epaisseur
+                    et,
+                    //Couleur
+                    ct,
+                    //Echelle en x
+                    ex,
+                    //Echelle en y
+                    ey,
+                    //Translation en x
+                    tx,
+                    //Translation en y
+                    ty
+                    );
+        break;
 
-        switch(index)
-        {
-        case 1 :
-
-            df = gd->AjouterFonction();
-            df->EcrireBorneInf(FONCTIONMIN);
-            df->EcrireBorneSup(FONCTIONMAX);
-            df->EcrirePas(TirerAuSort(PASMINMATH,PASMAXMATH));
-            gd->Ecrire(
-                        df,
-                        TirerAuSort(1,2),
-                        TirerCouleurAuSort(),
-                        ECHELLEMATHX,
-                        ECHELLEMATHY,
-                        0,
-                        TirerAuSort(-TRANSLATIONFONCTIONYMAX,TRANSLATIONFONCTIONYMAX)
-                        );
-            break;
-
-        case 2:
-
-            dp = gd->AjouterPuissance2();
-            dp->EcrireBorneInf(PUISSANCE2MIN);
-            dp->EcrireBorneSup(PUISSANCE2MAX);
-            dp->EcrirePas(TirerAuSort(PASMINMATH,PASMAXMATH));
-            gd->Ecrire(
-                        dp,
-                        TirerAuSort(1,2),
-                        TirerCouleurAuSort(),
-                        ECHELLEMATHX,
-                        ECHELLEMATHY,
-                        0,
-                        TirerAuSort(-TRANSLATIONPUISSANCE2YMAX,TRANSLATIONPUISSANCE2YMAX)
-                        );
-            break;
-
-        case 3:
-
-            dr = gd->AjouterRacineCarre();
-            dr->EcrireBorneInf(RACINEMIN);
-            dr->EcrireBorneSup(RACINEMAX);
-            dr->EcrirePas(TirerAuSort(PASMINMATH,PASMAXMATH));
-            gd->Ecrire(
-                        dr,
-                        TirerAuSort(1,2),
-                        TirerCouleurAuSort(),
-                        ECHELLEMATHX,
-                        ECHELLEMATHY,
-                        0,
-                        TirerAuSort(-TRANSLATIONRACINEYMAX,TRANSLATIONRACINEYMAX)
-                        );
-            break;
-
-        case 4:
-
-            de = gd->AjouterExponentiel();
-            de->EcrireBorneInf(EXPONENTIELMIN);
-            de->EcrireBorneSup(EXPONENTIELMAX);
-            de->EcrirePas(TirerAuSort(PASMINMATH,PASMAXMATH));
-            gd->Ecrire(
-                        de,
-                        TirerAuSort(1,2),
-                        TirerCouleurAuSort(),
-                        ECHELLEMATHX,
-                        ECHELLEMATHY,
-                        0,
-                        TirerAuSort(-TRANSLATIONEXPONENTIELYMAX,TRANSLATIONEXPONENTIELYMAX)
-                        );
-            break;
-        }
+    case 8:
+        dr = gd->AjouterRectangle();
+        dr->EcrireDimensions(LarRay, HautPas);
+        gd->Ecrire(
+                    dr,
+                    //Epaisseur
+                    et,
+                    //Couleur
+                    ct,
+                    //Echelle en x
+                    ex,
+                    //Echelle en y
+                    ey,
+                    //Translation en x
+                    tx,
+                    //Translation en y
+                    ty
+                    );
+        break;
     }
-
-    static void AjouterFormes(
-            gesdessin *gd,
-            const int index)
-    {
-        cercle *dc;
-        rectangle *dr;
-
-        switch(index)
-        {
-        case 1 :
-
-            dr = gd->AjouterRectangle();
-            dr->EcrireDimensions(TirerAuSort(LARGEURMIN,LARGEURMAX),TirerAuSort(HAUTEURMIN,HAUTEURMAX));
-            gd->Ecrire(
-                        dr,
-                        TirerAuSort(1,2),
-                        TirerCouleurAuSort(),
-                        ECHELLEFORMEX,
-                        ECHELLEFORMEY,
-                        0,
-                        TirerAuSort(-TRANSLATIONFORMEYMAX,TRANSLATIONFORMEYMAX)
-                        );
-            break;
-
-        case 2:
-
-            dc = gd->AjouterCercle();
-            dc->EcrireRayon(TirerAuSort(RAYONMIN,RAYONMAX));
-            dc->EcrirePas(TirerAuSort((double)0.1,(double)1));
-            gd->Ecrire(
-                        dc,
-                        TirerAuSort(1,2),
-                        TirerCouleurAuSort(),
-                        ECHELLEFORMEX,
-                        ECHELLEFORMEY,
-                        0,
-                        TirerAuSort(-TRANSLATIONFORMEYMAX,TRANSLATIONFORMEYMAX)
-                        );
-            break;
-        }
-    }
-
-// Fin éléments copiés
-*/
+}
 
 static void ajouter(
         const int t,
@@ -411,12 +461,12 @@ static void ajouter(
         fcreation *fc,
         const int index)
 {
-   // if (t == 1)
-        //AjouterMaths(gd);
+    if (t == 1)
+        AjouterMaths(gd, fc, index);
     if (t == 2)
         AjouterTrigos(gd,fc,index);
-    //if (t == 3)
-        //AjouterFormes(gd);
+    if (t == 3)
+        AjouterGeo(gd,fc,index);
 }
 
 static void creerTraces(
@@ -431,8 +481,8 @@ static void creerTraces(
     Reafficher(gd);
 }
 
-// Eléments copiés �  15h30
-    static bool SupprimerTrace(
+/*
+static bool SupprimerTrace(
             const int t,
             gesdessin *gd,
             fcreation *fc,
@@ -453,8 +503,9 @@ static void creerTraces(
         }
         return (ok);
     }
+*/
 
-    static void DetruireTraces(
+static void DetruireTraces(
             const int t,
             gesdessin *gd,
             fcreation *fc,
@@ -468,7 +519,8 @@ static void creerTraces(
         Reafficher(gd);
     }
 
-    static void EffacerTraces(
+/*
+static void EffacerTraces(
             const int t,
             gesdessin *gd,
             fcreation *fc,
@@ -477,8 +529,7 @@ static void creerTraces(
         gd->Effacer();
         EffacerListe(t,fc,sel);
     }
-
-// Fin éléments copiés
+*/
 
 
 //*******************************************
@@ -599,11 +650,42 @@ void ctrlcreation::creerTrigos(const int index)
     creerTraces(2, this->_fTrigo, this->_fc, this->_selectionTrigo, index);
 }
 
+void ctrlcreation::creerMaths(const int index)
+{
+    creerTraces(1, this->_fMath, this->_fc, this->_selectionMath, index);
+}
+
+void ctrlcreation::creerGeo(const int index)
+{
+    creerTraces(3, this->_fGeo, this->_fc, this->_selectionGeo, index);
+}
+
 void ctrlcreation::detruireTrigos(void)
 {
     DetruireTraces(2,this->_fTrigo,this->_fc,this->_selectionTrigo);
 }
 
+void ctrlcreation::detruireMaths(void)
+{
+    DetruireTraces(1,this->_fMath,this->_fc,this->_selectionMath);
+}
+
+void ctrlcreation::detruireGeo(void)
+{
+    DetruireTraces(3,this->_fGeo,this->_fc,this->_selectionGeo);
+}
+
+void ctrlcreation::afficherSelection(const int l, const int index)
+{
+    if((index>=1) && (index<=2))
+        AfficherSelection(this->_fTrigo,this->_selectionTrigo,l);
+    if((index>=3) && (index<=6))
+        AfficherSelection(this->_fMath,this->_selectionMath,l);
+    if((index>=7) && (index<=8))
+        AfficherSelection(this->_fGeo,this->_selectionGeo,l);
+}
+
+/*
 void ctrlcreation::effacerTrigos(void)
 {
     EffacerTraces(2,this->_fTrigo,this->_fc,this->_selectionTrigo);
@@ -612,18 +694,6 @@ void ctrlcreation::effacerTrigos(void)
 void ctrlcreation::viderTrigos(void)
 {
     SupprimerTrace(2,this->_fTrigo,this->_fc,this->_selectionTrigo);
-}
-
-
-
-void ctrlcreation::creerMaths(const int index)
-{
-    creerTraces(1, this->_fMath, this->_fc, this->_selectionMath, index);
-}
-
-void ctrlcreation::detruireMaths(void)
-{
-    DetruireTraces(1,this->_fMath,this->_fc,this->_selectionMath);
 }
 
 void ctrlcreation::effacerMaths(void)
@@ -636,17 +706,6 @@ void ctrlcreation::viderMaths(void)
     SupprimerTrace(1,this->_fMath,this->_fc,this->_selectionMath);
 }
 
-
-void ctrlcreation::creerGeo(const int index)
-{
-    creerTraces(3, this->_fGeo, this->_fc, this->_selectionGeo, index);
-}
-
-void ctrlcreation::detruireGeo(void)
-{
-    DetruireTraces(3,this->_fGeo,this->_fc,this->_selectionGeo);
-}
-
 void ctrlcreation::effacerGeo(void)
 {
     EffacerTraces(3,this->_fGeo,this->_fc,this->_selectionGeo);
@@ -656,3 +715,4 @@ void ctrlcreation::viderGeo(void)
 {
     SupprimerTrace(3,this->_fGeo,this->_fc,this->_selectionGeo);
 }
+*/
