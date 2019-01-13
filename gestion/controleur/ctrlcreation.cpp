@@ -229,11 +229,12 @@ static void AjouterMaths(
        QColor ct;
        int et;
 
+       fc->recupParamsCommuns(ex, ey, tx, ty, ct, et);
+       fc->recupParamsMaths(xmi, xma, vp);
+
        switch(index)
        {
        case 3:
-           fc->recupParamsCommuns(ex, ey, tx, ty, ct, et);
-           fc->recupParamsMaths(xmi, xma, vp);
            dp = gd->AjouterPuissance2();
            //Xmin
            dp->EcrireBorneInf(xmi);
@@ -259,8 +260,6 @@ static void AjouterMaths(
            break;
 
        case 4:
-           fc->recupParamsCommuns(ex, ey, tx, ty, ct, et);
-           fc->recupParamsMaths(xmi, xma, vp);
            dr = gd->AjouterRacineCarre();
            dr->EcrireBorneInf(xmi);
            dr->EcrireBorneSup(xma);
@@ -283,8 +282,6 @@ static void AjouterMaths(
            break;
 
        case 5 :
-           fc->recupParamsCommuns(ex, ey, tx, ty, ct, et);
-           fc->recupParamsMaths(xmi, xma, vp);
            df = gd->AjouterFonction();
            df->EcrireBorneInf(xmi);
            df->EcrireBorneSup(xma);
@@ -307,8 +304,6 @@ static void AjouterMaths(
            break;
 
        case 6:
-           fc->recupParamsCommuns(ex, ey, tx, ty, ct, et);
-           fc->recupParamsMaths(xmi, xma, vp);
            de = gd->AjouterExponentiel();
            de->EcrireBorneInf(xmi);
            de->EcrireBorneSup(xma);
@@ -343,11 +338,11 @@ static void AjouterTrigos(
     QColor ct;
     int et, np;
 
+    fc->recupParamsCommuns(ex, ey, tx, ty, ct, et);
 
     switch(index)
     {
-    case 1 :
-        fc->recupParamsCommuns(ex, ey, tx, ty, ct, et);
+    case 1 : 
         fc->recupParamsCosSin(np, vp);
         dc = gd->AjouterCosinus();
 
@@ -371,7 +366,6 @@ static void AjouterTrigos(
         break;
 
     case 2:
-        fc->recupParamsCommuns(ex, ey, tx, ty, ct, et);
         fc->recupParamsCosSin(np, vp);
         ds = gd->AjouterSinus();
 
@@ -390,6 +384,65 @@ static void AjouterTrigos(
     }
 }
 
+static void AjouterGeo(
+        gesdessin *gd,
+        fcreation *fc,
+        const int index)
+{
+    cercle *dc;
+    rectangle *dr;
+    double ex, ey, tx, ty, LarRay, HautPas;
+    QColor ct;
+    int et;
+
+    fc->recupParamsCommuns(ex, ey, tx, ty, ct, et);
+    fc->recupParamsGeo(LarRay, HautPas);
+
+    switch(index)
+    {
+    case 7:
+        dc = gd->AjouterCercle();
+        dc->EcrireRayon(LarRay);
+        dc->EcrirePas(HautPas);
+        gd->Ecrire(
+                    dc,
+                    //Epaisseur
+                    et,
+                    //Couleur
+                    ct,
+                    //Echelle en x
+                    ex,
+                    //Echelle en y
+                    ey,
+                    //Translation en x
+                    tx,
+                    //Translation en y
+                    ty
+                    );
+        break;
+
+    case 8:
+        dr = gd->AjouterRectangle();
+        dr->EcrireDimensions(LarRay, HautPas);
+        gd->Ecrire(
+                    dr,
+                    //Epaisseur
+                    et,
+                    //Couleur
+                    ct,
+                    //Echelle en x
+                    ex,
+                    //Echelle en y
+                    ey,
+                    //Translation en x
+                    tx,
+                    //Translation en y
+                    ty
+                    );
+        break;
+    }
+}
+
 static void ajouter(
         const int t,
         gesdessin *gd,
@@ -400,8 +453,8 @@ static void ajouter(
         AjouterMaths(gd, fc, index);
     if (t == 2)
         AjouterTrigos(gd,fc,index);
-    //if (t == 3)
-        //AjouterFormes(gd);
+    if (t == 3)
+        AjouterGeo(gd,fc,index);
 }
 
 static void creerTraces(
@@ -416,8 +469,7 @@ static void creerTraces(
     Reafficher(gd);
 }
 
-// Eléments copiés �  15h30
-    static bool SupprimerTrace(
+static bool SupprimerTrace(
             const int t,
             gesdessin *gd,
             fcreation *fc,
@@ -439,7 +491,7 @@ static void creerTraces(
         return (ok);
     }
 
-    static void DetruireTraces(
+static void DetruireTraces(
             const int t,
             gesdessin *gd,
             fcreation *fc,
@@ -453,7 +505,7 @@ static void creerTraces(
         Reafficher(gd);
     }
 
-    static void EffacerTraces(
+static void EffacerTraces(
             const int t,
             gesdessin *gd,
             fcreation *fc,

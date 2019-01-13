@@ -181,6 +181,11 @@ void fcreation::recupParamsMaths(double &xmi, double &xma, double &vp)
     vp = this->ui->spinValeurPasMath->value();
 }
 
+void fcreation::recupParamsGeo(double &LarRay, double &HautPas)
+{
+    LarRay = this->ui->spinLargeurRayonGeo->value();
+    HautPas = this->ui->spinHauteurPasGeo->value();
+}
 
 void fcreation::recupParamsCommuns(double &ex, double &ey,
                                    double &tx, double &ty, QColor &ct, int &et)
@@ -206,6 +211,16 @@ void fcreation::recupParamsCommuns(double &ex, double &ey,
         ty = this->ui->spinTransYMath->value();
         ct = this->getCouleurCourbes();
         stret = this->ui->comboEpaisseurMath->currentText();
+        et=stret.toInt();
+    }
+    if((index>=7) && (index<=8))
+    {
+        ex = this->ui->spinEchelleXGeo->value();
+        ey = this->ui->spinEchelleYGeo->value();
+        tx = this->ui->spinTransXGeo->value();
+        ty = this->ui->spinTransYGeo->value();
+        ct = this->getCouleurCourbes();
+        stret = this->ui->comboEpaisseurGeo->currentText();
         et=stret.toInt();
     }
 }
@@ -564,6 +579,8 @@ void fcreation::CBCreer(void)
        this->_ctrlCreate->creerTrigos(index);
     if((index>=3) && (index<=6))
        this->_ctrlCreate->creerMaths(index);
+    if((index>=7) && (index<=8))
+       this->_ctrlCreate->creerGeo(index);
 }
 
 void fcreation::CBParametrerLimites (void)
