@@ -72,6 +72,30 @@ QColor fcreation::getCouleurCourbes(void)
 {
     return(this->_couleurCourbes);
 }
+
+int fcreation::recupLigneSelect(const int index)
+{
+    int ligne;
+    if((index>=1) && (index<=2))
+    {
+        ligne = this->ui->LstTrigo->currentRow();
+    }
+    if((index>=3) && (index<=6))
+    {
+       ligne = this->ui->LstMath->currentRow();
+    }
+    if((index>=7) && (index<=8))
+    {
+       ligne = this->ui->LstGeo->currentRow();
+    }
+    return(ligne);
+}
+
+void fcreation::supprimerLigneList(const int ligne)
+{
+    //A faire today
+}
+
 //Méthode confirmer qui permet d'avoir le messageBox de confirmation
 //Avant de quitter l'application.
 bool fcreation::confirmer(const char *q)
@@ -564,6 +588,15 @@ void fcreation::initialiserCB(void)
                     SLOT(CBCreer())
                     );
 
+    //Evenement sur le bouton "-"
+    QObject::connect(
+                    this->ui->pushButtonRetirer,
+                    SIGNAL(clicked()),
+                    this,
+                    SLOT(CBSupprimerLigne())
+                    );
+
+
     //Evenement sur bouton "Vider"
     QObject::connect(
                     this->ui->pushButtonVider,
@@ -709,6 +742,16 @@ void fcreation::CBCreer(void)
     if((index>=7) && (index<=8))
        this->_ctrlCreate->creerGeo(index);
 }
+
+void fcreation::CBSupprimerLigne(void)
+{
+    int index = this->verifChecked();
+    int ligne = this->recupLigneSelect(index);
+
+    this->supprimerLigneList(ligne);
+    this->_ctrlCreate->supprimerForme(ligne, index);
+}
+
 void fcreation::CBLigneSelectionnee(int l)
 {
     int index;

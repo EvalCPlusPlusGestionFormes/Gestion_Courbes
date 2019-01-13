@@ -31,16 +31,17 @@ public:
     //*******************************************
     //          METHODES PUBLICS
     //*******************************************
+    static void Informer(const char *s);
+    static bool confirmer(const char *q);
+
     void setCouleurCourbes(const QColor);
     QColor getCouleurCourbes(void);
+    int recupLigneSelect(const int);
+    void supprimerLigneList(const int);
     QListWidget *Chercher(const int type);
-    static bool confirmer(const char *q);
     void Afficher(const int type,string *sm,string *sr,const int nbs);
     void Effacer(const int type);
     void Selectionner(const int type,const int sel);
-
-    static void Informer(const char *s);
-
     int verifChecked(void);
     void recupParamsCosSin(int&, double&);
     void recupParamsMaths(double&, double&, double&);
@@ -72,6 +73,7 @@ protected:
 private slots:
     void CBAfficherFenetreGraphique(void);
     void CBCreer(void);
+    void CBSupprimerLigne(void);
     void CBVider(void);
     void CBChoisirCouleur (void);
     void CBParametrerLimites (void);
