@@ -626,7 +626,6 @@ if ((index>=3) && (index<=6))
 
   }
 
-
     //********************************************
     //Parametrage des valeurs Mini et Maxi pour les Forme Geo
     //********************************************

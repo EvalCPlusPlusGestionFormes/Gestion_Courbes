@@ -67,7 +67,7 @@ static void Positionner(
     f->move(x,y);
 }
 
-//********  Ajout d'un repère ********
+//********  Ajout d'un rep�rere ********
 static void AjouterRepere(
         const int t,
         gesdessin *gd)
@@ -157,8 +157,7 @@ static void Reafficher(
     gd->Rafraichir();
 }
 
-// Eléments copiés �  15h30
-    static void EffacerSelection(
+static void EffacerSelection(
             gesdessin *gd,
             int &sel)
     {
@@ -170,7 +169,7 @@ static void Reafficher(
         }
     }
 
-    static void AfficherSelection(
+static void AfficherSelection(
             gesdessin *gd,
             int &sel,
             int l)
@@ -184,7 +183,6 @@ static void Reafficher(
             Reafficher(gd);
         }
     }
-// Fin éléments copiés
 
 static void toString(
         gesdessin *gd,
@@ -483,6 +481,7 @@ static void creerTraces(
     Reafficher(gd);
 }
 
+/*
 static bool SupprimerTrace(
             const int t,
             gesdessin *gd,
@@ -504,6 +503,7 @@ static bool SupprimerTrace(
         }
         return (ok);
     }
+*/
 
 static void DetruireTraces(
             const int t,
@@ -519,6 +519,7 @@ static void DetruireTraces(
         Reafficher(gd);
     }
 
+/*
 static void EffacerTraces(
             const int t,
             gesdessin *gd,
@@ -528,8 +529,7 @@ static void EffacerTraces(
         gd->Effacer();
         EffacerListe(t,fc,sel);
     }
-
-// Fin éléments copiés
+*/
 
 
 //*******************************************
@@ -668,6 +668,27 @@ void ctrlcreation::detruireTrigos(void)
     DetruireTraces(2,this->_fTrigo,this->_fc,this->_selectionTrigo);
 }
 
+void ctrlcreation::detruireMaths(void)
+{
+    DetruireTraces(1,this->_fMath,this->_fc,this->_selectionMath);
+}
+
+void ctrlcreation::detruireGeo(void)
+{
+    DetruireTraces(3,this->_fGeo,this->_fc,this->_selectionGeo);
+}
+
+void ctrlcreation::afficherSelection(const int l, const int index)
+{
+    if((index>=1) && (index<=2))
+        AfficherSelection(this->_fTrigo,this->_selectionTrigo,l);
+    if((index>=3) && (index<=6))
+        AfficherSelection(this->_fMath,this->_selectionMath,l);
+    if((index>=7) && (index<=8))
+        AfficherSelection(this->_fGeo,this->_selectionGeo,l);
+}
+
+/*
 void ctrlcreation::effacerTrigos(void)
 {
     EffacerTraces(2,this->_fTrigo,this->_fc,this->_selectionTrigo);
@@ -676,11 +697,6 @@ void ctrlcreation::effacerTrigos(void)
 void ctrlcreation::viderTrigos(void)
 {
     SupprimerTrace(2,this->_fTrigo,this->_fc,this->_selectionTrigo);
-}
-
-void ctrlcreation::detruireMaths(void)
-{
-    DetruireTraces(1,this->_fMath,this->_fc,this->_selectionMath);
 }
 
 void ctrlcreation::effacerMaths(void)
@@ -693,11 +709,6 @@ void ctrlcreation::viderMaths(void)
     SupprimerTrace(1,this->_fMath,this->_fc,this->_selectionMath);
 }
 
-void ctrlcreation::detruireGeo(void)
-{
-    DetruireTraces(3,this->_fGeo,this->_fc,this->_selectionGeo);
-}
-
 void ctrlcreation::effacerGeo(void)
 {
     EffacerTraces(3,this->_fGeo,this->_fc,this->_selectionGeo);
@@ -707,12 +718,4 @@ void ctrlcreation::viderGeo(void)
 {
     SupprimerTrace(3,this->_fGeo,this->_fc,this->_selectionGeo);
 }
-void ctrlcreation::afficherSelection(const int l, const int index)
-{
-    if((index>=1) && (index<=2))
-        AfficherSelection(this->_fTrigo,this->_selectionTrigo,l);
-    if((index>=3) && (index<=6))
-        AfficherSelection(this->_fMath,this->_selectionMath,l);
-    if((index>=7) && (index<=8))
-        AfficherSelection(this->_fGeo,this->_selectionGeo,l);
-}
+*/
