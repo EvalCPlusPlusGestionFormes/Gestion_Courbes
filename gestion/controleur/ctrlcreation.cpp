@@ -170,6 +170,20 @@ static void Reafficher(
         }
     }
 
+    static void AfficherSelection(
+            gesdessin *gd,
+            int &sel,
+            int l)
+    {
+        if (l!=-1)
+        {
+            EffacerSelection(gd, sel);
+            sel = l;
+            gd->Colorer(sel,Qt::red);
+            gd->EcrireEpaisseur(sel,3);
+            Reafficher(gd);
+        }
+    }
 // Fin éléments copiés
 
 static void toString(
@@ -692,4 +706,13 @@ void ctrlcreation::effacerGeo(void)
 void ctrlcreation::viderGeo(void)
 {
     SupprimerTrace(3,this->_fGeo,this->_fc,this->_selectionGeo);
+}
+void ctrlcreation::afficherSelection(const int l, const int index)
+{
+    if((index>=1) && (index<=2))
+        AfficherSelection(this->_fTrigo,this->_selectionTrigo,l);
+    if((index>=3) && (index<=6))
+        AfficherSelection(this->_fMath,this->_selectionMath,l);
+    if((index>=7) && (index<=8))
+        AfficherSelection(this->_fGeo,this->_selectionGeo,l);
 }

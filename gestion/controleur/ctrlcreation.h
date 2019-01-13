@@ -55,6 +55,7 @@ public:
    void detruireGeo(void);
    void effacerGeo(void);
    void viderGeo(void);
+   void afficherSelection(const int, const int);
 
 };
 

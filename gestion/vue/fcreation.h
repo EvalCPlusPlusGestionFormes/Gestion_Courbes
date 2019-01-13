@@ -74,6 +74,7 @@ private slots:
     void CBVider(void);
     void CBChoisirCouleur (void);
     void CBParametrerLimites (void);
+    void CBLigneSelectionnee(int);
 };
 
 #endif // FCREATION_H

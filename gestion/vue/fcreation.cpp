@@ -531,6 +531,24 @@ void fcreation::initialiserCB(void)
                 this,
                 SLOT (CBParametrerLimites())
                 );
+    QObject::connect(
+                this->ui->LstTrigo,
+                SIGNAL(currentRowChanged(int)),
+                this,
+                SLOT(CBLigneSelectionnee(int))
+                );
+    QObject::connect(
+                this->ui->LstMath,
+                SIGNAL(currentRowChanged(int)),
+                this,
+                SLOT(CBLigneSelectionnee(int))
+                );
+    QObject::connect(
+                this->ui->LstGeo,
+                SIGNAL(currentRowChanged(int)),
+                this,
+                SLOT(CBLigneSelectionnee(int))
+                );
 }
 
 
@@ -582,7 +600,12 @@ void fcreation::CBCreer(void)
     if((index>=7) && (index<=8))
        this->_ctrlCreate->creerGeo(index);
 }
-
+void fcreation::CBLigneSelectionnee(int l)
+{
+    int index;
+    index=this->verifChecked();
+    this->_ctrlCreate->afficherSelection(l,index);
+}
 void fcreation::CBParametrerLimites (void)
 {
     int index = this->verifChecked();
