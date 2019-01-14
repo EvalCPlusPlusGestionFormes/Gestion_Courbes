@@ -155,12 +155,17 @@ static void AfficherSelection(
     {
         if (l!=-1)
         {
-            EffacerSelection(gd, sel);
-            sel = l;
-            gd->Colorer(sel,Qt::red);
-            gd->EcrireEpaisseur(sel,3);
-            recupParamSelect(gd, fc, sel);
-            Reafficher(gd);
+                EffacerSelection(gd, sel);
+                sel = l;
+                gd->EcrireEpaisseur(sel,3);
+
+                if(l!=0)
+                    gd->Colorer(sel,Qt::red);
+                else
+                    gd->EcrireEpaisseur(0);
+
+                recupParamSelect(gd, fc, sel);
+                Reafficher(gd);
         }
     }
 static void toString(

@@ -722,7 +722,7 @@ void fcreation::initialiserCB(void)
 void fcreation::CBAfficherFenetreGraphique(void)
 {
     this->_ctrlCreate->afficherFenetreGraphique(
-                    this->ui->tabWidgetForme->currentIndex());
+    this->ui->tabWidgetForme->currentIndex());
 }
 
 void fcreation::CBChoisirCouleur(void)
@@ -770,6 +770,7 @@ void fcreation::CBLigneSelectionnee(int l)
 void fcreation::CBParametrerLimites (void)
 {
     int index = this->verifChecked();
+
     //********************************************
     //Parametrage des valeurs Mini et Maxi pour la Trigo
     //********************************************
@@ -778,6 +779,8 @@ void fcreation::CBParametrerLimites (void)
         this->initialiserTabTrigo();
         this->initialiserTips(index);
         this->ui->LstTrigo->setCurrentRow(-1);
+        this->ui->LstMath->setCurrentRow(-1);
+        this->ui->LstGeo->setCurrentRow(-1);
       }
 
         //********************************************
@@ -787,7 +790,9 @@ void fcreation::CBParametrerLimites (void)
      {
         this->initialiserTabMath(index);
         this->initialiserTips(index);
+        this->ui->LstTrigo->setCurrentRow(-1);
         this->ui->LstMath->setCurrentRow(-1);
+        this->ui->LstGeo->setCurrentRow(-1);
       }
 
         //********************************************
@@ -795,9 +800,10 @@ void fcreation::CBParametrerLimites (void)
         //********************************************
     if ((index>=7) && (index<=8))
     {
-
         this->initialiserTabGeo(index);
         this->initialiserTips(index);
+        this->ui->LstTrigo->setCurrentRow(-1);
+        this->ui->LstMath->setCurrentRow(-1);
         this->ui->LstGeo->setCurrentRow(-1);
     }
 
