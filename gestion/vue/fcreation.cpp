@@ -91,11 +91,6 @@ int fcreation::recupLigneSelect(const int index)
     return(ligne);
 }
 
-void fcreation::supprimerLigneList(const int ligne)
-{
-    //A faire today
-}
-
 //Méthode confirmer qui permet d'avoir le messageBox de confirmation
 //Avant de quitter l'application.
 bool fcreation::confirmer(const char *q)
@@ -110,6 +105,14 @@ bool fcreation::confirmer(const char *q)
                 QMessageBox::No
                 )==QMessageBox::Yes;
     return (r);
+}
+
+void fcreation::informer(const char *s)
+{
+    QMessageBox::information(
+                0,
+                "Confirmation",
+                s);
 }
 
 QListWidget* fcreation::Chercher(
@@ -732,110 +735,55 @@ void fcreation::CBChoisirCouleur(void)
 
 void fcreation::CBCreer(void)
 {
-    int index;
-    index = this->verifChecked();
-
-    if((index>=1) && (index<=2))
-       this->_ctrlCreate->creerTrigos(index);
-    if((index>=3) && (index<=6))
-       this->_ctrlCreate->creerMaths(index);
-    if((index>=7) && (index<=8))
-       this->_ctrlCreate->creerGeo(index);
+    this->_ctrlCreate->creerForme();
 }
 
 void fcreation::CBSupprimerLigne(void)
 {
-    int index = this->verifChecked();
-    int ligne = this->recupLigneSelect(index);
-
-    this->supprimerLigneList(ligne);
-    this->_ctrlCreate->supprimerForme(ligne, index);
+    this->_ctrlCreate->supprimerForme();
 }
 
 void fcreation::CBLigneSelectionnee(int l)
 {
-    int index;
-    index=this->verifChecked();
-    this->_ctrlCreate->afficherSelection(l,index);
+    this->_ctrlCreate->afficherSelectionLigne(l);
 }
+
 void fcreation::CBParametrerLimites (void)
 {
     int index = this->verifChecked();
     //********************************************
     //Parametrage des valeurs Mini et Maxi pour la Trigo
     //********************************************
-if ((index>=1) && (index<=2))
-  {
-            this->initialiserTabTrigo();
-            this->initialiserTips(index);
-  }
+    if ((index>=1) && (index<=2))
+      {
+        this->initialiserTabTrigo();
+        this->initialiserTips(index);
+      }
 
-    //********************************************
-    //Parametrage des valeurs Mini et Maxi pour les Math
-    //********************************************
-if ((index>=3) && (index<=6))
- {
-            this->initialiserTabMath(index);
-            this->initialiserTips(index);
+        //********************************************
+        //Parametrage des valeurs Mini et Maxi pour les Math
+        //********************************************
+    if ((index>=3) && (index<=6))
+     {
+        this->initialiserTabMath(index);
+        this->initialiserTips(index);
 
-  }
+      }
 
-    //********************************************
-    //Parametrage des valeurs Mini et Maxi pour les Forme Geo
-    //********************************************
-if ((index>=7) && (index<=8))
-{
-            this->initialiserTabGeo(index);
-            this->initialiserTips(index);
-}
+        //********************************************
+        //Parametrage des valeurs Mini et Maxi pour les Forme Geo
+        //********************************************
+    if ((index>=7) && (index<=8))
+    {
+        this->initialiserTabGeo(index);
+        this->initialiserTips(index);
+    }
 
 }
 
 void fcreation::CBVider(void)
 {
-    int i=this->ui->tabWidgetForme->currentIndex();
-
-    if (i==0){
-        int reponse = QMessageBox::question(this, "Confirmation vider Trigo", "Attention, vous allez vider <strong>Trigo</strong>", QMessageBox::Yes | QMessageBox::No);
-
-        if (reponse == QMessageBox::Yes)
-            {
-                this->_ctrlCreate->detruireTrigos();
-                QMessageBox::information(this, "Commande effectuée", "La liste a bien été vidé");
-            }
-        else if (reponse == QMessageBox::No)
-            {
-                // Ferme la QMessageBox
-            }
-    }
-
-    if (i==1){
-        int reponse = QMessageBox::question(this, "Confirmation vider Math", "Attention, vous allez vider <strong>Math</strong>", QMessageBox::Yes | QMessageBox::No);
-
-        if (reponse == QMessageBox::Yes)
-            {
-                this->_ctrlCreate->detruireMaths();
-                QMessageBox::information(this, "Commande effectuée", "La liste a bien été vidé");
-            }
-        else if (reponse == QMessageBox::No)
-            {
-                // Ferme la QMessageBox
-            }
-    }
-
-    if (i==2){
-        int reponse = QMessageBox::question(this, "Confirmation vider Géo", "Attention, vous allez vider <strong>Géo</strong>", QMessageBox::Yes | QMessageBox::No);
-
-        if (reponse == QMessageBox::Yes)
-            {
-                this->_ctrlCreate->detruireGeo();
-                QMessageBox::information(this, "Commande effectuée", "La liste a bien été vidé");
-            }
-        else if (reponse == QMessageBox::No)
-            {
-                // Ferme la QMessageBox
-            }
-    }
+    this->_ctrlCreate->detruireFormes();
 }
 
 //*******************************************

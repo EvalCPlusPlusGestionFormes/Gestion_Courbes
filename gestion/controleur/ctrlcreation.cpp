@@ -71,6 +71,7 @@ static void Positionner(
 static void AjouterRepere(
         const int t,
         gesdessin *gd)
+
 {
     repere *r;
     double dimx,dimy;
@@ -481,8 +482,8 @@ static void creerTraces(
     Reafficher(gd);
 }
 
-/*
-static bool SupprimerTrace(
+
+static bool supprimerTrace(
             const int t,
             gesdessin *gd,
             fcreation *fc,
@@ -492,7 +493,11 @@ static bool SupprimerTrace(
         int isupp;
         bool ok;
 
-        ok = fcreation::confirmer(q);
+        sprintf (q,
+                 "Voulez vous detruire la courbe [%s]",
+                 gd->toStringUnDessin(sel).data()
+                 );
+        ok = fc->confirmer(q);
         if (ok==true)
         {
             isupp = sel;
@@ -503,7 +508,6 @@ static bool SupprimerTrace(
         }
         return (ok);
     }
-*/
 
 static void DetruireTraces(
             const int t,
@@ -518,19 +522,6 @@ static void DetruireTraces(
         AfficherListe(t,gd,fc,sel);
         Reafficher(gd);
     }
-
-/*
-static void EffacerTraces(
-            const int t,
-            gesdessin *gd,
-            fcreation *fc,
-            const int sel)
-    {
-        gd->Effacer();
-        EffacerListe(t,fc,sel);
-    }
-*/
-
 
 //*******************************************
 //           METHODE INITIALISER
@@ -645,38 +636,85 @@ void ctrlcreation::afficherFenetreGraphique(const int index)
     }
 }
 
-void ctrlcreation::creerTrigos(const int index)
+void ctrlcreation::creerForme(void)
 {
-    creerTraces(2, this->_fTrigo, this->_fc, this->_selectionTrigo, index);
+    int index = this->_fc->verifChecked();
+
+    if((index>=1) && (index<=2))
+        creerTraces(2, this->_fTrigo, this->_fc, this->_selectionTrigo, index);
+    if((index>=3) && (index<=6))
+        creerTraces(1, this->_fMath, this->_fc, this->_selectionMath, index);
+    if((index>=7) && (index<=8))
+        creerTraces(3, this->_fGeo, this->_fc, this->_selectionGeo, index);
 }
 
-void ctrlcreation::creerMaths(const int index)
+void ctrlcreation::detruireFormes(void)
 {
-    creerTraces(1, this->_fMath, this->_fc, this->_selectionMath, index);
+    int index = this->_fc->verifChecked();
+    if((index>=1) && (index<=2))
+        if (this->_fc->confirmer("Voulez vous vider la liste TRIGO ?"))
+            DetruireTraces(2,this->_fTrigo,this->_fc,this->_selectionTrigo);
+    if((index>=3) && (index<=6))
+        if (this->_fc->confirmer("Voulez vous vider la liste MATHS ?"))
+            DetruireTraces(1,this->_fMath,this->_fc,this->_selectionMath);
+    if((index>=7) && (index<=8))
+        if (this->_fc->confirmer("Voulez vous vider la liste GEO ?"))
+            DetruireTraces(3,this->_fGeo,this->_fc,this->_selectionGeo);
+
 }
 
-void ctrlcreation::creerGeo(const int index)
+void ctrlcreation::supprimerForme(void)
 {
-    creerTraces(3, this->_fGeo, this->_fc, this->_selectionGeo, index);
+    dessin *des;
+    int index = this->_fc->verifChecked();
+
+    if((index>=1) && (index<=2))
+    {
+        if (this->_selectionTrigo== -1)
+                this->_fc->informer("Aucune forme n'est selectionnee");
+        if (this->_selectionTrigo== 0)
+                this->_fc->informer("Le repere ne peut etre supprime");
+        else
+        {
+            des = this->_fTrigo->Lire(this->_selectionTrigo);
+            if (des != NULL)
+                supprimerTrace(2,this->_fTrigo,this->_fc,this->_selectionTrigo);
+        }
+    }
+
+    if((index>=3) && (index<=6))
+    {
+        if (this->_selectionMath== -1)
+                this->_fc->informer("Aucune forme n'est selectionnee");
+        if (this->_selectionMath== 0)
+                this->_fc->informer("Le repere ne peut etre supprime");
+        else
+        {
+            des = this->_fMath->Lire(this->_selectionMath);
+            if (des != NULL)
+                supprimerTrace(1,this->_fMath,this->_fc,this->_selectionMath);
+        }
+    }
+
+    if((index>=7) && (index<=8))
+    {
+        if (this->_selectionGeo== -1)
+                this->_fc->informer("Aucune forme n'est selectionnee");
+        if (this->_selectionGeo== 0)
+                this->_fc->informer("Le repere ne peut etre supprime");
+        else
+        {
+            des = this->_fGeo->Lire(this->_selectionGeo);
+            if (des != NULL)
+                supprimerTrace(3,this->_fGeo,this->_fc,this->_selectionGeo);
+        }
+    }
+
 }
 
-void ctrlcreation::detruireTrigos(void)
+void ctrlcreation::afficherSelectionLigne(const int l)
 {
-    DetruireTraces(2,this->_fTrigo,this->_fc,this->_selectionTrigo);
-}
-
-void ctrlcreation::detruireMaths(void)
-{
-    DetruireTraces(1,this->_fMath,this->_fc,this->_selectionMath);
-}
-
-void ctrlcreation::detruireGeo(void)
-{
-    DetruireTraces(3,this->_fGeo,this->_fc,this->_selectionGeo);
-}
-
-void ctrlcreation::afficherSelection(const int l, const int index)
-{
+    int index = this->_fc->verifChecked();
     if((index>=1) && (index<=2))
         AfficherSelection(this->_fTrigo,this->_selectionTrigo,l);
     if((index>=3) && (index<=6))

@@ -159,8 +159,7 @@ public:
             );
 
     // lecture du ieme tracé
-    dessin *Lire(
-            const int i);
+    dessin *Lire( const int i);
 
     // lecture du ieme tracé et recupération
     // de l'epaisseur et de la couleur

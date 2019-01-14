@@ -31,13 +31,13 @@ public:
     //*******************************************
     //          METHODES PUBLICS
     //*******************************************
-    static void Informer(const char *s);
+    static void informer(const char *s);
     static bool confirmer(const char *q);
 
     void setCouleurCourbes(const QColor);
     QColor getCouleurCourbes(void);
     int recupLigneSelect(const int);
-    void supprimerLigneList(const int);
+    void supprimerLigneList(const int, const int);
     QListWidget *Chercher(const int type);
     void Afficher(const int type,string *sm,string *sr,const int nbs);
     void Effacer(const int type);

@@ -43,20 +43,20 @@ HEADERS += \
 FORMS += \
     vue/fcreation.ui
 
-win32:CONFIG(release, debug|release): LIBS += -L./../build-dllcreer-Desktop_Qt_5_11_1_MinGW_32bit-Debug/release/ -ldllcreer
-else:win32:CONFIG(debug, debug|release): LIBS += -L./../build-dllcreer-Desktop_Qt_5_11_1_MinGW_32bit-Debug/debug/ -ldllcreer
-else:unix: LIBS += -L./../build-dllcreer-Desktop_Qt_5_11_1_MinGW_32bit-Debug/ -ldllcreer
-
-
-INCLUDEPATH += ./../dllcreer
-DEPENDPATH += ./../dllcreer
-
-win32:CONFIG(release, debug|release): LIBS += -L./../build-dlldessiner-Desktop_Qt_5_11_1_MinGW_32bit-Debug/release/ -ldlldessiner
-else:win32:CONFIG(debug, debug|release): LIBS += -L./../build-dlldessiner-Desktop_Qt_5_11_1_MinGW_32bit-Debug/debug/ -ldlldessiner
-else:unix: LIBS += -L./../build-dlldessiner-Desktop_Qt_5_7_0_MinGW_32bit-Debug/ -ldlldessiner
-
-INCLUDEPATH += ./../dlldessiner
-DEPENDPATH += ./../dlldessiner
 
 RESOURCES += \
     logo_gestion_formes.qrc
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../build-dllcreer-Desktop_Qt_5_11_1_MinGW_32bit-Debug/release/ -ldllcreer
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../build-dllcreer-Desktop_Qt_5_11_1_MinGW_32bit-Debug/debug/ -ldllcreer
+else:unix: LIBS += -L$$PWD/../build-dllcreer-Desktop_Qt_5_11_1_MinGW_32bit-Debug/ -ldllcreer
+
+INCLUDEPATH += $$PWD/../dllcreer
+DEPENDPATH += $$PWD/../dllcreer
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../build-dlldessiner-Desktop_Qt_5_11_1_MinGW_32bit-Debug/release/ -ldlldessiner
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../build-dlldessiner-Desktop_Qt_5_11_1_MinGW_32bit-Debug/debug/ -ldlldessiner
+else:unix: LIBS += -L$$PWD/../build-dlldessiner-Desktop_Qt_5_11_1_MinGW_32bit-Debug/ -ldlldessiner
+
+INCLUDEPATH += $$PWD/../dlldessiner
+DEPENDPATH += $$PWD/../dlldessiner

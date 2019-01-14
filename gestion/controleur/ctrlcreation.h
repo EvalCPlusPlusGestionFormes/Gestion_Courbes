@@ -40,22 +40,18 @@ public:
    //            METHODES PUBLICS
    //*******************************************
    void afficherFenetreGraphique(const int);
+   void afficherSelectionLigne(const int);
 
-   void creerTrigos(const int);
-   void detruireTrigos(void);
-   void effacerTrigos(void);
-   void viderTrigos(void);
+   void creerForme();
+   void detruireFormes(void);
+   void supprimerForme(void);
 
-   void creerMaths(const int);
-   void detruireMaths(void);
-   void effacerMaths(void);
-   void viderMaths(void);
-
-   void creerGeo(const int);
-   void detruireGeo(void);
-   void effacerGeo(void);
-   void viderGeo(void);
-   void afficherSelection(const int, const int);
+   //void effacerTrigos(void);
+   //void viderTrigos(void);
+   //void effacerMaths(void);
+   //void viderMaths(void)
+   //void effacerGeo(void);
+   //void viderGeo(void);
 
 };
 
