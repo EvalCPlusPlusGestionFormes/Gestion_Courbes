@@ -45,14 +45,6 @@ public:
    void creerForme();
    void detruireFormes(void);
    void supprimerForme(void);
-
-   //void effacerTrigos(void);
-   //void viderTrigos(void);
-   //void effacerMaths(void);
-   //void viderMaths(void)
-   //void effacerGeo(void);
-   //void viderGeo(void);
-
 };
 
 #endif // CTRLCREATION_H

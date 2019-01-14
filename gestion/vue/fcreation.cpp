@@ -252,6 +252,25 @@ void fcreation::recupParamsCommuns(double &ex, double &ey,
     }
 }
 
+void fcreation::setParamCommuns(const double ex, const double ey,
+                            const double tx, const double ty,
+                            const QColor ct, int et)
+{
+    QString stret;
+    QString scoul;
+
+    this->ui->spinEchelleXTrigo->setValue(ex);
+    this->ui->spinEchelleYTrigo->setValue(ey);
+    this->ui->spinTransXTrigo->setValue(tx);
+    this->ui->spinTransYTrigo->setValue(ty);
+    this->setCouleurCourbes(ct);
+
+    scoul = QString("background-color: ")+ct.name()+";";
+    this->ui->BtnCouleurTrigo->setStyleSheet(scoul);
+
+    stret.setNum(et);
+    this->ui->comboEpaisseurTrigo->setCurrentText(stret);
+}
 void fcreation::initialiserTabTrigo(void)
 {
     this->ui->spinPeriodeTrigo->setRange(1,3);
@@ -758,6 +777,7 @@ void fcreation::CBParametrerLimites (void)
       {
         this->initialiserTabTrigo();
         this->initialiserTips(index);
+        this->ui->LstTrigo->setCurrentRow(-1);
       }
 
         //********************************************
@@ -767,7 +787,7 @@ void fcreation::CBParametrerLimites (void)
      {
         this->initialiserTabMath(index);
         this->initialiserTips(index);
-
+        this->ui->LstMath->setCurrentRow(-1);
       }
 
         //********************************************
@@ -775,8 +795,10 @@ void fcreation::CBParametrerLimites (void)
         //********************************************
     if ((index>=7) && (index<=8))
     {
+
         this->initialiserTabGeo(index);
         this->initialiserTips(index);
+        this->ui->LstGeo->setCurrentRow(-1);
     }
 
 }

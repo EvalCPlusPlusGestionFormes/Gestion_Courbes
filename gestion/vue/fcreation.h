@@ -48,6 +48,8 @@ public:
     void recupParamsGeo(double&, double&);
     void recupParamsCommuns(double&, double&, double&, double&,
                             QColor&, int&);
+    void setParamCommuns(const double, const double, const double, const double,
+                         const QColor, const int);
     void initialiserTabTrigo(void);
     void initialiserTabMath(int);
     void initialiserTabGeo(int);

@@ -111,46 +111,6 @@ static void AjouterRepere(
     }
 }
 
-/*
-// min<=n<=max
-static int TirerAuSort(
-        const int min,
-        const int max)
-{
-    int n;
-    n =
-            min+
-            (rand()%(max-min+1));
-    return (n);
-}
-*/
-
-/*
-// min<=f<=max
-static double TirerAuSort(
-        const double min,
-        const double max)
-{
-    double f;
-    f =
-            (rand()/(double)RAND_MAX)*
-            (max-min) + min;
-
-    return (f);
-}
-*/
-/*
-static QColor TirerCouleurAuSort(void)
-{
-    int r,v,b;
-    r = TirerAuSort(0,255);
-    v = TirerAuSort(0,255);
-    b = TirerAuSort(0,255);
-
-    QColor c(r,v,b);
-    return c;
-}
-*/
 static void Reafficher(
         gesdessin *gd)
 {
@@ -170,8 +130,26 @@ static void EffacerSelection(
         }
     }
 
+static void recupParamSelect(gesdessin *gd,
+                             fcreation *fc,
+                             int sel)
+{
+    double ex, ey, tx, ty;
+    int et;
+    QColor ct;
+    dessin *des;
+
+    des = gd->Lire(sel,et, ct);
+    ex = des->LireEx();
+    ey = des->LireEy();
+    tx = des->LireTx();
+    ty = des->LireTy();
+    fc->setParamCommuns(ex, ey, tx, ty, ct, et);
+}
+
 static void AfficherSelection(
             gesdessin *gd,
+            fcreation *fc,
             int &sel,
             int l)
     {
@@ -181,10 +159,10 @@ static void AfficherSelection(
             sel = l;
             gd->Colorer(sel,Qt::red);
             gd->EcrireEpaisseur(sel,3);
+            recupParamSelect(gd, fc, sel);
             Reafficher(gd);
         }
     }
-
 static void toString(
         gesdessin *gd,
         string *&sm,
@@ -716,41 +694,9 @@ void ctrlcreation::afficherSelectionLigne(const int l)
 {
     int index = this->_fc->verifChecked();
     if((index>=1) && (index<=2))
-        AfficherSelection(this->_fTrigo,this->_selectionTrigo,l);
+        AfficherSelection(this->_fTrigo,this->_fc,this->_selectionTrigo,l);
     if((index>=3) && (index<=6))
-        AfficherSelection(this->_fMath,this->_selectionMath,l);
+        AfficherSelection(this->_fMath,this->_fc,this->_selectionMath,l);
     if((index>=7) && (index<=8))
-        AfficherSelection(this->_fGeo,this->_selectionGeo,l);
+        AfficherSelection(this->_fGeo,this->_fc,this->_selectionGeo,l);
 }
-
-/*
-void ctrlcreation::effacerTrigos(void)
-{
-    EffacerTraces(2,this->_fTrigo,this->_fc,this->_selectionTrigo);
-}
-
-void ctrlcreation::viderTrigos(void)
-{
-    SupprimerTrace(2,this->_fTrigo,this->_fc,this->_selectionTrigo);
-}
-
-void ctrlcreation::effacerMaths(void)
-{
-    EffacerTraces(1,this->_fMath,this->_fc,this->_selectionMath);
-}
-
-void ctrlcreation::viderMaths(void)
-{
-    SupprimerTrace(1,this->_fMath,this->_fc,this->_selectionMath);
-}
-
-void ctrlcreation::effacerGeo(void)
-{
-    EffacerTraces(3,this->_fGeo,this->_fc,this->_selectionGeo);
-}
-
-void ctrlcreation::viderGeo(void)
-{
-    SupprimerTrace(3,this->_fGeo,this->_fc,this->_selectionGeo);
-}
-*/
