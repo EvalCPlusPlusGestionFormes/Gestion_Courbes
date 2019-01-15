@@ -541,6 +541,10 @@ void ctrlcreation::initialiser(void)
     AjouterRepere(2, this->_fTrigo);
     AjouterRepere(1, this->_fMath);
     AjouterRepere(3, this->_fGeo);
+    AfficherListe(2,this->_fTrigo,this->_fc,1);
+    AfficherListe(1,this->_fMath,this->_fc,3);
+    AfficherListe(3,this->_fGeo,this->_fc,5);
+
 
     //Affiche le repère.
     this->_fTrigo->ChoisirModeAffichage(0);

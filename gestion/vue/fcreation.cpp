@@ -271,35 +271,36 @@ void fcreation::setParamCommuns(const double ex, const double ey,
     stret.setNum(et);
     this->ui->comboEpaisseurTrigo->setCurrentText(stret);
 }
-void fcreation::initialiserTabTrigo(void)
+
+void fcreation::initialiserTab(int index)
 {
-    this->ui->spinPeriodeTrigo->setRange(1,3);
-    this->ui->spinPeriodeTrigo->setValue(1);
-    this->ui->spinValeurPasTrigo->setRange(0.1,1.5);
-    this->ui->spinValeurPasTrigo->setValue(0.1);
-    this->ui->spinEchelleXTrigo->setRange(10.0,12.0);
-    this->ui->spinEchelleXTrigo->setValue(10.0);
-    this->ui->spinEchelleYTrigo->setRange(34.0,37.0);
-    this->ui->spinEchelleYTrigo->setValue(34.0);
-    this->ui->spinTransXTrigo->setRange(0,0);
-    this->ui->spinTransXTrigo->setValue(0);
-    this->ui->spinTransYTrigo->setRange(-1.0,1.0);
-    this->ui->spinTransYTrigo->setValue(-1.0);
-    this->ui->BtnCouleurTrigo->setStyleSheet("background-color: rgb(0, 0, 0);");
-    this->setCouleurCourbes(Qt::black);
+    switch (index) {
+
+    case 1&2:
+        this->ui->spinPeriodeTrigo->setRange(1,3);
+        this->ui->spinPeriodeTrigo->setValue(1);
+        this->ui->spinValeurPasTrigo->setRange(0.1,1.5);
+        this->ui->spinValeurPasTrigo->setValue(0.1);
+        this->ui->spinEchelleXTrigo->setRange(10.0,12.0);
+        this->ui->spinEchelleXTrigo->setValue(10.0);
+        this->ui->spinEchelleYTrigo->setRange(34.0,37.0);
+        this->ui->spinEchelleYTrigo->setValue(34.0);
+        this->ui->spinTransXTrigo->setRange(0,0);
+        this->ui->spinTransXTrigo->setValue(0);
+        this->ui->spinTransYTrigo->setRange(-1.0,1.0);
+        this->ui->spinTransYTrigo->setValue(-1.0);
+        this->ui->BtnCouleurTrigo->setStyleSheet("background-color: rgb(0, 0, 0);");
+        this->setCouleurCourbes(Qt::black);
+        break;
 
     //Parametrage ComboBox et positionnement sur la valeur=1 (0)
     this->ui->comboEpaisseurTrigo->setCurrentIndex(0);
-}
 
-void fcreation::initialiserTabMath(int index)
-{
-    switch (index) {
     //Puissance 2
     case 3:
         //Parametrage des limites
-        this->ui->spinXminMath->setRange(-1.0,-1.25);
-        this->ui->spinXminMath->setValue(-1.0);
+        this->ui->spinXminMath->setRange(-1.25,-1.00);
+        this->ui->spinXminMath->setValue(-1.25);
         this->ui->spinXmaxMath->setRange(1.0,1.25);
         this->ui->spinXmaxMath->setValue(1.0);
         this->ui->spinValeurPasMath->setRange(0.1,1.0);
@@ -391,21 +392,13 @@ void fcreation::initialiserTabMath(int index)
         this->ui->comboEpaisseurMath->setCurrentIndex(0);
         break;
 
-    }
-}
+        //Cercle
+     case 7:
 
-void fcreation::initialiserTabGeo(int index)
-{
-    switch (index) {
-
-    //Cercle
-    case 7:
-        //Changement du Nom des Label Communs (Rayon/Hauteur et Largeur/Pas )
-        this->ui->lblHauteurPasGeo->setText("Valeur du pas");
-        this->ui->lblLargeurRayonGeo->setText("Rayon");
+        //modification des label communs
+        initialiserCerRect(index);
 
         //Parametrage des limites
-
         this->ui->spinLargeurRayonGeo->setRange(25.0,37.5);
         this->ui->spinLargeurRayonGeo->setValue(25.0);
         this->ui->spinHauteurPasGeo->setRange(0.1,1.0);
@@ -427,9 +420,9 @@ void fcreation::initialiserTabGeo(int index)
 
         //Rectangle
     case 8:
-        //Changement du Nom des Label Communs (Rayon/Hauteur et Largeur/Pas )
-        this->ui->lblHauteurPasGeo->setText("Hauteur");
-        this->ui->lblLargeurRayonGeo->setText("Largeur");
+
+        //modification des label communs
+        initialiserCerRect(index);
 
         //Parametrage des limites
         this->ui->spinLargeurRayonGeo->setRange(25.0,50.0);
@@ -450,7 +443,23 @@ void fcreation::initialiserTabGeo(int index)
         //Parametrage ComboBox et positionnement sur la valeur=1 (0)
         this->ui->comboEpaisseurGeo->setCurrentIndex(0);
         break;
+
+    }
 }
+void fcreation::initialiserCerRect (int index)
+{
+    if (index==7)
+            {
+            //Changement du Nom des Label Communs (Rayon/Hauteur et Largeur/Pas )
+            this->ui->lblHauteurPasGeo->setText("Valeur du pas");
+            this->ui->lblLargeurRayonGeo->setText("Rayon");
+            }
+    else
+
+            //Changement du Nom des Label Communs (Rayon/Hauteur et Largeur/Pas )
+            this->ui->lblHauteurPasGeo->setText("Hauteur");
+            this->ui->lblLargeurRayonGeo->setText("Largeur");
+
 }
 
 void fcreation::initialiserTips(int index)
@@ -562,6 +571,14 @@ void fcreation::initialiserTips(int index)
     }
 }
 
+
+//Affichage des fentres graphique
+void fcreation::AfficherFenetreGraphique(void)
+{
+    this->_ctrlCreate->afficherFenetreGraphique(
+    this->ui->tabWidgetForme->currentIndex());
+}
+
 //*******************************************
 //              CONSTRUCTEUR
 //*******************************************
@@ -572,7 +589,8 @@ fcreation::fcreation(ctrlcreation *creation, QWidget *parent) :
     this->_ctrlCreate = creation;
     ui->setupUi(this);
     this->initialiserCB();
-    this->initialiserTabTrigo();
+    this->initialiserTab(1);
+    //this->_ctrlCreate->AppelRepere(1);
 }
 
 //*******************************************
@@ -589,12 +607,12 @@ fcreation::~fcreation()
 void fcreation::initialiserCB(void)
 {
     //Evenement sur les onglets.
-    QObject::connect(
-                    this->ui->tabWidgetForme,
-                    SIGNAL(currentChanged(int)),
-                    this,
-                    SLOT(CBAfficherFenetreGraphique())
-                    );
+//    QObject::connect(
+//                    this->ui->tabWidgetForme,
+//                    SIGNAL(currentChanged(int)),
+//                    this,
+//                    SLOT(CBAfficherFenetreGraphique())
+//                    );
     QObject::connect(
                     this->ui->tabWidgetForme,
                     SIGNAL(currentChanged(int)),
@@ -719,11 +737,7 @@ void fcreation::initialiserCB(void)
 //*******************************************
 //              SLOTS PRIVATES
 //*******************************************
-void fcreation::CBAfficherFenetreGraphique(void)
-{
-    this->_ctrlCreate->afficherFenetreGraphique(
-    this->ui->tabWidgetForme->currentIndex());
-}
+
 
 void fcreation::CBChoisirCouleur(void)
 {
@@ -731,8 +745,6 @@ void fcreation::CBChoisirCouleur(void)
       QColor couleur = QColorDialog::getColor(Qt::white,this);
       scouleur=QString("background-color: ")+couleur.name()+";";
       int i=this->ui->tabWidgetForme->currentIndex();
-
-      //this->ui->ComboCouleurTrigo->setStyleSheet(scouleur);
 
         if (i==0)
            {
@@ -770,13 +782,15 @@ void fcreation::CBLigneSelectionnee(int l)
 void fcreation::CBParametrerLimites (void)
 {
     int index = this->verifChecked();
+    this->AfficherFenetreGraphique();
+
 
     //********************************************
     //Parametrage des valeurs Mini et Maxi pour la Trigo
     //********************************************
     if ((index>=1) && (index<=2))
       {
-        this->initialiserTabTrigo();
+        this->initialiserTab(index);
         this->initialiserTips(index);
         this->ui->LstTrigo->setCurrentRow(-1);
         this->ui->LstMath->setCurrentRow(-1);
@@ -788,7 +802,7 @@ void fcreation::CBParametrerLimites (void)
         //********************************************
     if ((index>=3) && (index<=6))
      {
-        this->initialiserTabMath(index);
+        this->initialiserTab(index);
         this->initialiserTips(index);
         this->ui->LstTrigo->setCurrentRow(-1);
         this->ui->LstMath->setCurrentRow(-1);
@@ -800,7 +814,7 @@ void fcreation::CBParametrerLimites (void)
         //********************************************
     if ((index>=7) && (index<=8))
     {
-        this->initialiserTabGeo(index);
+        this->initialiserTab(index);
         this->initialiserTips(index);
         this->ui->LstTrigo->setCurrentRow(-1);
         this->ui->LstMath->setCurrentRow(-1);
