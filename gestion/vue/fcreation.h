@@ -50,7 +50,6 @@ public:
                             QColor&, int&);
     void setParamCommuns(const double, const double, const double, const double,
                          const QColor, const int);
-<<<<<<< HEAD
     void initialiserTab(int);
     void initialiserTips(int);
     void AfficherFenetreGraphique(void);

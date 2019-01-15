@@ -224,12 +224,7 @@ static void recupParamSelection(gesdessin *gd,
     else
     {
         int index = fc->verifChecked();
-        if ((index>=1) && (index<=2))
-            fc->initialiserTabTrigo();
-        if ((index>=3) && (index<=6))
-            fc->initialiserTabMath(index);
-        if ((index>=7) && (index<=8))
-            fc->initialiserTabGeo(index);
+        fc->initialiserTab(index);
     }
 
     if((type==100)||(type==200))
