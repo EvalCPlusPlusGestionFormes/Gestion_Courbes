@@ -45,7 +45,7 @@ background-color: rgb(214, 214, 214);</string>
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidgetForme">
       <property name="toolTip">
-       <string>décimale toujours = 0</string>
+       <string/>
       </property>
       <property name="styleSheet">
        <string notr="true"> font: 11pt &quot;Arial&quot;;
@@ -180,7 +180,7 @@ background-color: rgb(214, 214, 214);</string>
                     </size>
                    </property>
                    <property name="toolTip">
-                    <string>décimale comprise entre 34 et 37</string>
+                    <string>Décimale comprise entre 34 et 37</string>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">background-color: rgb(255, 255, 255);
@@ -299,7 +299,7 @@ font: 11pt &quot;Arial&quot;;</string>
                     </size>
                    </property>
                    <property name="toolTip">
-                    <string>décimale comprise entre 0.1 et 1.5</string>
+                    <string>Décimale comprise entre 0.1 et 1.5</string>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">background-color: rgb(255, 255, 255);
@@ -347,7 +347,7 @@ font: 11pt &quot;Arial&quot;;</string>
                     </size>
                    </property>
                    <property name="toolTip">
-                    <string>entier compris entre 1 et 3</string>
+                    <string>Entier compris entre 1 et 3</string>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">background-color: rgb(255, 255, 255);
@@ -427,7 +427,7 @@ font: 11pt &quot;Arial&quot;;</string>
                     </size>
                    </property>
                    <property name="toolTip">
-                    <string>entier compris entre 1 et 2</string>
+                    <string>Entier compris entre 1 et 2</string>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">background-color: rgb(255, 255, 255);
@@ -476,7 +476,7 @@ font: 11pt &quot;Arial&quot;;</string>
                     </size>
                    </property>
                    <property name="toolTip">
-                    <string>décimale comprise entre 10 et 12</string>
+                    <string>Décimale comprise entre 10 et 12</string>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">background-color: rgb(255, 255, 255);
@@ -559,7 +559,7 @@ font: 11pt &quot;Arial&quot;;</string>
                     </size>
                    </property>
                    <property name="toolTip">
-                    <string>couleur quelconque</string>
+                    <string>Couleur quelconque</string>
                    </property>
                    <property name="styleSheet">
                     <string notr="true"/>
@@ -584,7 +584,7 @@ font: 11pt &quot;Arial&quot;;</string>
                     </size>
                    </property>
                    <property name="toolTip">
-                    <string>décimale comprise entre -1 et 1.</string>
+                    <string>Décimale comprise entre -1 et 1</string>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">background-color: rgb(255, 255, 255);
@@ -625,7 +625,7 @@ font: 11pt &quot;Arial&quot;;</string>
                     </size>
                    </property>
                    <property name="toolTip">
-                    <string>décimale toujours = 0</string>
+                    <string>Décimale toujours = 0</string>
                    </property>
                    <property name="statusTip">
                     <string>test</string>
@@ -818,7 +818,7 @@ font: 11pt &quot;Arial&quot;;</string>
                     </size>
                    </property>
                    <property name="toolTip">
-                    <string>décimale comprise entre 34 et 37</string>
+                    <string>Décimale comprise entre 34 et 37</string>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">background-color: rgb(255, 255, 255);
@@ -944,7 +944,7 @@ font: 11pt &quot;Arial&quot;;</string>
                     </size>
                    </property>
                    <property name="toolTip">
-                    <string>décimale comprise entre 0.1 et 1.0</string>
+                    <string>Décimale comprise entre 0.1 et 1.0</string>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">background-color: rgb(255, 255, 255);
@@ -1004,7 +1004,7 @@ font: 11pt &quot;Arial&quot;;</string>
                     </size>
                    </property>
                    <property name="toolTip">
-                    <string>décimale comprise entre -0.5 et 0.5</string>
+                    <string>Décimale comprise entre -0.5 et 0.5</string>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">background-color: rgb(255, 255, 255);
@@ -1064,7 +1064,7 @@ font: 11pt &quot;Arial&quot;;</string>
                     </size>
                    </property>
                    <property name="toolTip">
-                    <string>décimale comprise entre 1 et 1.25</string>
+                    <string>Décimale comprise entre 1 et 1.25</string>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">background-color: rgb(255, 255, 255);
@@ -1124,7 +1124,7 @@ font: 11pt &quot;Arial&quot;;</string>
                     </size>
                    </property>
                    <property name="toolTip">
-                    <string>couleur quelconque</string>
+                    <string>Couleur quelconque</string>
                    </property>
                    <property name="styleSheet">
                     <string notr="true"/>
@@ -1162,7 +1162,7 @@ font: 11pt &quot;Arial&quot;;</string>
                     </size>
                    </property>
                    <property name="toolTip">
-                    <string>décimale comprise entre -1 et -1.25</string>
+                    <string>Décimale comprise entre -1 et -1.25</string>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">background-color: rgb(255, 255, 255);
@@ -1232,7 +1232,7 @@ font: 11pt &quot;Arial&quot;;</string>
                     </size>
                    </property>
                    <property name="toolTip">
-                    <string>décimale comprise entre 34 et 37</string>
+                    <string>Décimale comprise entre 34 et 37</string>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">background-color: rgb(255, 255, 255);
@@ -1264,7 +1264,7 @@ font: 11pt &quot;Arial&quot;;</string>
                     </size>
                    </property>
                    <property name="toolTip">
-                    <string>entier compris entre 1 et 2</string>
+                    <string>Entier compris entre 1 et 2</string>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">background-color: rgb(255, 255, 255);
@@ -1303,7 +1303,7 @@ font: 11pt &quot;Arial&quot;;</string>
                     </size>
                    </property>
                    <property name="toolTip">
-                    <string>décimale toujours = 0</string>
+                    <string>Décimale toujours = 0</string>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">background-color: rgb(255, 255, 255);</string>
@@ -1462,7 +1462,7 @@ font: 11pt &quot;Arial&quot;;</string>
                     </size>
                    </property>
                    <property name="toolTip">
-                    <string>décimale comprise entre 25 et 50</string>
+                    <string>Décimale comprise entre 25 et 50</string>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">background-color: rgb(255, 255, 255);
@@ -1526,7 +1526,7 @@ font: 11pt &quot;Arial&quot;;</string>
                     </size>
                    </property>
                    <property name="toolTip">
-                    <string>décimale comprise entre 50 et 100</string>
+                    <string>Décimale comprise entre 50 et 100</string>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">background-color: rgb(255, 255, 255);
@@ -1590,7 +1590,7 @@ font: 11pt &quot;Arial&quot;;</string>
                     </size>
                    </property>
                    <property name="toolTip">
-                    <string>décimale comprise entre 1 et 1.5</string>
+                    <string>Décimale comprise entre 1 et 1.5</string>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">background-color: rgb(255, 255, 255);
@@ -1654,7 +1654,7 @@ font: 11pt &quot;Arial&quot;;</string>
                     </size>
                    </property>
                    <property name="toolTip">
-                    <string>couleur quelconque</string>
+                    <string>Couleur quelconque</string>
                    </property>
                    <property name="styleSheet">
                     <string notr="true"/>
@@ -1695,7 +1695,7 @@ font: 11pt &quot;Arial&quot;;</string>
                     </size>
                    </property>
                    <property name="toolTip">
-                    <string>décimale comprise entre 0.75 et 1.5</string>
+                    <string>Décimale comprise entre 0.75 et 1.5</string>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">background-color: rgb(255, 255, 255);
@@ -1778,7 +1778,7 @@ font: 11pt &quot;Arial&quot;;</string>
                     </size>
                    </property>
                    <property name="toolTip">
-                    <string>décimale comprise entre -12 et 12.</string>
+                    <string>Décimale comprise entre -12 et 12</string>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">background-color: rgb(255, 255, 255);
@@ -1813,7 +1813,7 @@ font: 11pt &quot;Arial&quot;;</string>
                     </size>
                    </property>
                    <property name="toolTip">
-                    <string>entier compris entre 1 et 2</string>
+                    <string>Entier compris entre 1 et 2</string>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">background-color: rgb(255, 255, 255);
@@ -1852,7 +1852,7 @@ font: 11pt &quot;Arial&quot;;</string>
                     </size>
                    </property>
                    <property name="toolTip">
-                    <string>décimale toujours = 0</string>
+                    <string>Décimale toujours = 0</string>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">background-color: rgb(255, 255, 255);
@@ -1892,6 +1892,9 @@ font: 11pt &quot;Arial&quot;;</string>
           <height>35</height>
          </size>
         </property>
+        <property name="toolTip">
+         <string>Bouton ajouter</string>
+        </property>
         <property name="styleSheet">
          <string notr="true">font: 75 18pt &quot;Arial&quot;;
 background-color: rgb(0, 170, 0);</string>
@@ -1908,6 +1911,9 @@ background-color: rgb(0, 170, 0);</string>
           <width>16777215</width>
           <height>35</height>
          </size>
+        </property>
+        <property name="toolTip">
+         <string>Bouton supprimer</string>
         </property>
         <property name="styleSheet">
          <string notr="true">font: 75 18pt &quot;Arial&quot;;
@@ -1926,27 +1932,14 @@ background-color: rgb(221, 0, 0);</string>
           <height>35</height>
          </size>
         </property>
+        <property name="toolTip">
+         <string>Bouton modifier</string>
+        </property>
         <property name="styleSheet">
          <string notr="true">font: 75 11pt &quot;MS Shell Dlg 2&quot;;</string>
         </property>
         <property name="text">
          <string>Modifier</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButtonAfficher">
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>35</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">font: 75 11pt &quot;MS Shell Dlg 2&quot;;</string>
-        </property>
-        <property name="text">
-         <string>Afficher</string>
         </property>
        </widget>
       </item>
@@ -1957,6 +1950,9 @@ background-color: rgb(221, 0, 0);</string>
           <width>16777215</width>
           <height>35</height>
          </size>
+        </property>
+        <property name="toolTip">
+         <string>Bouton vider</string>
         </property>
         <property name="styleSheet">
          <string notr="true">font: 75 11pt &quot;MS Shell Dlg 2&quot;;</string>
@@ -1972,6 +1968,49 @@ background-color: rgb(221, 0, 0);</string>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>tabWidgetForme</tabstop>
+  <tabstop>radioCosinus</tabstop>
+  <tabstop>radioSinus</tabstop>
+  <tabstop>LstTrigo</tabstop>
+  <tabstop>spinPeriodeTrigo</tabstop>
+  <tabstop>spinValeurPasTrigo</tabstop>
+  <tabstop>comboEpaisseurTrigo</tabstop>
+  <tabstop>spinTransXTrigo</tabstop>
+  <tabstop>spinEchelleXTrigo</tabstop>
+  <tabstop>BtnCouleurTrigo</tabstop>
+  <tabstop>spinTransYTrigo</tabstop>
+  <tabstop>spinEchelleYTrigo</tabstop>
+  <tabstop>radioPuissance2</tabstop>
+  <tabstop>radioRacineCarree</tabstop>
+  <tabstop>radioFonction</tabstop>
+  <tabstop>radioExponentiel</tabstop>
+  <tabstop>LstMath</tabstop>
+  <tabstop>spinXminMath</tabstop>
+  <tabstop>spinXmaxMath</tabstop>
+  <tabstop>spinValeurPasMath</tabstop>
+  <tabstop>comboEpaisseurMath</tabstop>
+  <tabstop>spinTransXMath</tabstop>
+  <tabstop>spinEchelleXMath</tabstop>
+  <tabstop>BtnCouleurMath</tabstop>
+  <tabstop>spinTransYMath</tabstop>
+  <tabstop>spinEchelleYMath</tabstop>
+  <tabstop>radioCercle</tabstop>
+  <tabstop>radioRectangle</tabstop>
+  <tabstop>LstGeo</tabstop>
+  <tabstop>spinLargeurRayonGeo</tabstop>
+  <tabstop>spinHauteurPasGeo</tabstop>
+  <tabstop>comboEpaisseurGeo</tabstop>
+  <tabstop>spinTransXGeo</tabstop>
+  <tabstop>spinEchelleXGeo</tabstop>
+  <tabstop>BtnCouleurGeo</tabstop>
+  <tabstop>spinTransYGeo</tabstop>
+  <tabstop>spinEchelleYGeo</tabstop>
+  <tabstop>pushButtonAjouter</tabstop>
+  <tabstop>pushButtonRetirer</tabstop>
+  <tabstop>pushButtonModifier</tabstop>
+  <tabstop>pushButtonVider</tabstop>
+ </tabstops>
  <resources>
   <include location="../logo_gestion_formes.qrc"/>
  </resources>
