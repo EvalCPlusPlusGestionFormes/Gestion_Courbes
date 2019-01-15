@@ -276,7 +276,24 @@ void fcreation::initialiserTab(int index)
 {
     switch (index) {
 
-    case 1&2:
+    case 1:
+        this->ui->spinPeriodeTrigo->setRange(1,3);
+        this->ui->spinPeriodeTrigo->setValue(1);
+        this->ui->spinValeurPasTrigo->setRange(0.1,1.5);
+        this->ui->spinValeurPasTrigo->setValue(0.1);
+        this->ui->spinEchelleXTrigo->setRange(10.0,12.0);
+        this->ui->spinEchelleXTrigo->setValue(10.0);
+        this->ui->spinEchelleYTrigo->setRange(34.0,37.0);
+        this->ui->spinEchelleYTrigo->setValue(34.0);
+        this->ui->spinTransXTrigo->setRange(0,0);
+        this->ui->spinTransXTrigo->setValue(0);
+        this->ui->spinTransYTrigo->setRange(-1.0,1.0);
+        this->ui->spinTransYTrigo->setValue(-1.0);
+        this->ui->BtnCouleurTrigo->setStyleSheet("background-color: rgb(0, 0, 0);");
+        this->setCouleurCourbes(Qt::black);
+        break;
+
+    case 2:
         this->ui->spinPeriodeTrigo->setRange(1,3);
         this->ui->spinPeriodeTrigo->setValue(1);
         this->ui->spinValeurPasTrigo->setRange(0.1,1.5);
