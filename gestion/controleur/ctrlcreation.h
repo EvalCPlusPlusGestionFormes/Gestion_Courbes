@@ -41,8 +41,8 @@ public:
    //*******************************************
    void afficherFenetreGraphique(const int);
    void afficherSelectionLigne(const int);
-
-   void creerForme();
+   void modifLigne(void);
+   void creerForme(void);
    void detruireFormes(void);
    void supprimerForme(void);
 };

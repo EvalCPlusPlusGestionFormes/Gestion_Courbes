@@ -693,6 +693,13 @@ void fcreation::initialiserCB(void)
                     this,
                     SLOT(CBVider())
                     );
+    //Evenement sur bouton "Modifier"
+    QObject::connect(
+                    this->ui->pushButtonModifier,
+                    SIGNAL(clicked()),
+                    this,
+                    SLOT(CBModifLigne())
+                    );
 
     //Evenement sur bouton "choisir Couleur"
     QObject::connect(
@@ -885,4 +892,9 @@ void fcreation::closeEvent(QCloseEvent *event)
         event->ignore();
     else
         qApp->quit();
+}
+
+void fcreation::CBModifLigne(void)
+{
+    this->_ctrlCreate->modifLigne();
 }

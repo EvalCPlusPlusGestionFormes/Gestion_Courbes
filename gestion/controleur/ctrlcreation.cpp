@@ -544,6 +544,136 @@ static void AjouterGeo(
     }
 }
 
+static void modifierTrigos(gesdessin *gd, fcreation *fc, const int sel)
+{
+    dessin *des;
+    trigo *trig;
+    double ex, ey, tx, ty, vp;
+    QColor ct;
+    int et, np;
+
+    des = gd->Lire(sel);
+    trig = (trigo*)des;
+
+    fc->recupParamsCommuns(ex, ey, tx, ty, ct, et);
+    fc->recupParamsTrigo(np, vp);
+
+    trig->EcrireNbPeriode(np);
+    trig->EcrirePas(vp);
+    gd->Ecrire(
+                trig,
+                //Epaisseur
+                et,
+                //Couleur
+                ct,
+                //Echelle en x
+                ex,
+                //Echelle en y
+                ey,
+                //Translation en x
+                tx,
+                //Translation en y
+                ty
+                );
+
+}
+
+static void modifierMaths(gesdessin *gd, fcreation *fc, const int sel)
+{
+    dessin *des;
+    maths *math;
+    double ex, ey, tx, ty, xmi, xma, vp;
+    QColor ct;
+    int et;
+
+    des = gd->Lire(sel);
+    math = (maths*)des;
+
+    fc->recupParamsCommuns(ex, ey, tx, ty, ct, et);
+    fc->recupParamsMaths(xmi, xma, vp);
+
+    math->EcrireBorneInf(xmi);
+    math->EcrireBorneSup(xma);
+    math->EcrirePas(vp);
+    gd->Ecrire(
+                math,
+                //Epaisseur
+                et,
+                //Couleur
+                ct,
+                //Echelle en x
+                ex,
+                //Echelle en y
+                ey,
+                //Translation en x
+                tx,
+                //Translation en y
+                ty
+                );
+
+}
+
+static void modifierGeo(gesdessin *gd, fcreation *fc, const int sel)
+{
+    int type;
+    dessin *des;
+    cercle *cer;
+    rectangle *rect;
+    double ex, ey, tx, ty, LarRay, HautPas;
+    QColor ct;
+    int et;
+
+    des = gd->Lire(sel);
+    type = des->LireType();
+
+    fc->recupParamsCommuns(ex, ey, tx, ty, ct, et);
+    fc->recupParamsGeo(LarRay, HautPas);
+
+    if (type==1000)
+    {
+        cer = (cercle*)des;
+        cer->EcrireRayon(LarRay);
+        cer->EcrirePas(HautPas);
+        gd->Ecrire(
+                    cer,
+                    //Epaisseur
+                    et,
+                    //Couleur
+                    ct,
+                    //Echelle en x
+                    ex,
+                    //Echelle en y
+                    ey,
+                    //Translation en x
+                    tx,
+                    //Translation en y
+                    ty
+                    );
+    }
+
+    if (type==2000)
+    {
+        rect = (rectangle*)des;
+        rect->EcrireDimensions(LarRay, HautPas);
+        gd->Ecrire(
+                    rect,
+                    //Epaisseur
+                    et,
+                    //Couleur
+                    ct,
+                    //Echelle en x
+                    ex,
+                    //Echelle en y
+                    ey,
+                    //Translation en x
+                    tx,
+                    //Translation en y
+                    ty
+                    );
+    }
+
+}
+
 static void ajouter(
         const int t,
         gesdessin *gd,
@@ -558,6 +688,16 @@ static void ajouter(
         AjouterGeo(gd,fc,index);
 }
 
+static void modifier(const int t, gesdessin *gd,fcreation *fc, const int sel)
+{
+    if (t == 1)
+        modifierMaths(gd, fc, sel);
+    if (t == 2)
+        modifierTrigos(gd,fc, sel);
+    if (t == 3)
+        modifierGeo(gd,fc, sel);
+}
+
 static void creerTraces(
         const int t,
         gesdessin *gd,
@@ -570,6 +710,12 @@ static void creerTraces(
     Reafficher(gd);
 }
 
+static void modifierTraces(const int t, gesdessin *gd, fcreation *fc, const int sel)
+{
+    modifier(t, gd, fc, sel);
+    AfficherListe(t, gd, fc, sel);
+    Reafficher(gd);
+}
 
 static bool supprimerTrace(
             const int t,
@@ -730,6 +876,21 @@ void ctrlcreation::afficherFenetreGraphique(const int index)
             this->positionDefaut();
             break;
     }
+}
+
+void ctrlcreation::modifLigne(void)
+{
+    int index = this->_fc->verifChecked();
+
+    if((index>=1) && (index<=2))
+        modifierTraces(2,this->_fTrigo,this->_fc,this->_selectionTrigo);
+        //creerTraces(2, this->_fTrigo, this->_fc, this->_selectionTrigo, index);
+    if((index>=3) && (index<=6))
+        modifierTraces(1,this->_fMath,this->_fc,this->_selectionMath);
+        //creerTraces(1, this->_fMath, this->_fc, this->_selectionMath, index);
+    if((index>=7) && (index<=8))
+        modifierTraces(3,this->_fGeo,this->_fc,this->_selectionGeo);
+        //creerTraces(3, this->_fGeo, this->_fc, this->_selectionGeo, index);
 }
 
 void ctrlcreation::creerForme(void)

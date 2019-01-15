@@ -81,6 +81,7 @@ private slots:
     void CBCreer(void);
     void CBSupprimerLigne(void);
     void CBVider(void);
+    void CBModifLigne(void);
     void CBChoisirCouleur (void);
     void CBParametrerLimites (void);
     void CBLigneSelectionnee(int);
