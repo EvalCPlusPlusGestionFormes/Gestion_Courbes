@@ -42,7 +42,7 @@ public:
    void afficherFenetreGraphique(const int);
    void afficherSelectionLigne(const int);
 
-   void creerForme();
+   void creerForme(void);
    void detruireFormes(void);
    void supprimerForme(void);
 

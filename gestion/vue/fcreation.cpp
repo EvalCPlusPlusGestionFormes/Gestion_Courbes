@@ -448,18 +448,24 @@ void fcreation::initialiserTab(int index)
 }
 void fcreation::initialiserCerRect (int index)
 {
-    if (index==7)
-            {
-            //Changement du Nom des Label Communs (Rayon/Hauteur et Largeur/Pas )
-            this->ui->lblHauteurPasGeo->setText("Valeur du pas");
-            this->ui->lblLargeurRayonGeo->setText("Rayon");
-            }
-    else
+    switch (index)
+    {
+    case 7:
+        {
+        //Changement du Nom des Label Communs (Rayon/Hauteur et Largeur/Pas )
+        this->ui->lblHauteurPasGeo->setText("Valeur du pas");
+        this->ui->lblLargeurRayonGeo->setText("Rayon");
+        }
+        break;
 
-            //Changement du Nom des Label Communs (Rayon/Hauteur et Largeur/Pas )
-            this->ui->lblHauteurPasGeo->setText("Hauteur");
-            this->ui->lblLargeurRayonGeo->setText("Largeur");
-
+    case 8:
+        {
+        //Changement du Nom des Label Communs (Rayon/Hauteur et Largeur/Pas )
+        this->ui->lblHauteurPasGeo->setText("Hauteur");
+        this->ui->lblLargeurRayonGeo->setText("Largeur");
+        }
+        break;
+    }
 }
 
 void fcreation::initialiserTips(int index)
@@ -590,7 +596,6 @@ fcreation::fcreation(ctrlcreation *creation, QWidget *parent) :
     ui->setupUi(this);
     this->initialiserCB();
     this->initialiserTab(1);
-    //this->_ctrlCreate->AppelRepere(1);
 }
 
 //*******************************************
@@ -607,12 +612,7 @@ fcreation::~fcreation()
 void fcreation::initialiserCB(void)
 {
     //Evenement sur les onglets.
-//    QObject::connect(
-//                    this->ui->tabWidgetForme,
-//                    SIGNAL(currentChanged(int)),
-//                    this,
-//                    SLOT(CBAfficherFenetreGraphique())
-//                    );
+
     QObject::connect(
                     this->ui->tabWidgetForme,
                     SIGNAL(currentChanged(int)),
