@@ -195,7 +195,7 @@ int fcreation::verifChecked(void)
     return(numRadio);
 }
 
-void fcreation::recupParamsCosSin(int &np, double &vp)
+void fcreation::recupParamsTrigo(int &np, double &vp)
 {
     np = this->ui->spinPeriodeTrigo->value();
     vp = this->ui->spinValeurPasTrigo->value();
@@ -252,24 +252,68 @@ void fcreation::recupParamsCommuns(double &ex, double &ey,
     }
 }
 
+void fcreation::setParamTrigo(const int np, double vp)
+{
+    this->ui->spinPeriodeTrigo->setValue(np);
+    this->ui->spinValeurPasTrigo->setValue(vp);
+}
+
+void fcreation::setParamMath(const double xmin, const double xmax, const double vp)
+{
+    this->ui->spinXminMath->setValue(xmin);
+    this->ui->spinXmaxMath->setValue(xmax);
+    this->ui->spinValeurPasMath->setValue(vp);
+}
+
+void fcreation::setParamGeo(const double larRay, const double hautPas)
+{
+    this->ui->spinLargeurRayonGeo->setValue(larRay);
+    this->ui->spinHauteurPasGeo->setValue(hautPas);
+}
+
 void fcreation::setParamCommuns(const double ex, const double ey,
                             const double tx, const double ty,
                             const QColor ct, int et)
 {
+    int index = this->verifChecked();
     QString stret;
     QString scoul;
 
-    this->ui->spinEchelleXTrigo->setValue(ex);
-    this->ui->spinEchelleYTrigo->setValue(ey);
-    this->ui->spinTransXTrigo->setValue(tx);
-    this->ui->spinTransYTrigo->setValue(ty);
     this->setCouleurCourbes(ct);
 
-    scoul = QString("background-color: ")+ct.name()+";";
-    this->ui->BtnCouleurTrigo->setStyleSheet(scoul);
-
-    stret.setNum(et);
-    this->ui->comboEpaisseurTrigo->setCurrentText(stret);
+    if((index>=1) && (index<=2))
+    {
+        this->ui->spinEchelleXTrigo->setValue(ex);
+        this->ui->spinEchelleYTrigo->setValue(ey);
+        this->ui->spinTransXTrigo->setValue(tx);
+        this->ui->spinTransYTrigo->setValue(ty);
+        scoul = QString("background-color: ")+ct.name()+";";
+        this->ui->BtnCouleurTrigo->setStyleSheet(scoul);
+        stret.setNum(et);
+        this->ui->comboEpaisseurTrigo->setCurrentText(stret);
+    }
+    if((index>=3) && (index<=6))
+    {
+        this->ui->spinEchelleXMath->setValue(ex);
+        this->ui->spinEchelleYMath->setValue(ey);
+        this->ui->spinTransXMath->setValue(tx);
+        this->ui->spinTransYMath->setValue(ty);
+        scoul = QString("background-color: ")+ct.name()+";";
+        this->ui->BtnCouleurMath->setStyleSheet(scoul);
+        stret.setNum(et);
+        this->ui->comboEpaisseurMath->setCurrentText(stret);
+    }
+    if((index>=7) && (index<=8))
+    {
+        this->ui->spinEchelleXGeo->setValue(ex);
+        this->ui->spinEchelleYGeo->setValue(ey);
+        this->ui->spinTransXGeo->setValue(tx);
+        this->ui->spinTransYGeo->setValue(ty);
+        scoul = QString("background-color: ")+ct.name()+";";
+        this->ui->BtnCouleurGeo->setStyleSheet(scoul);
+        stret.setNum(et);
+        this->ui->comboEpaisseurGeo->setCurrentText(stret);
+    }
 }
 
 void fcreation::initialiserTab(int index)
@@ -594,7 +638,6 @@ void fcreation::initialiserTips(int index)
     }
 }
 
-
 //Affichage des fentres graphique
 void fcreation::AfficherFenetreGraphique(void)
 {
@@ -602,6 +645,28 @@ void fcreation::AfficherFenetreGraphique(void)
     this->ui->tabWidgetForme->currentIndex());
 }
 
+void fcreation::selectLastRow(void)
+{
+    int index = this->verifChecked();
+    int nbElem;
+
+    if ((index>=1) && (index<=2))
+      {
+        nbElem = this->ui->LstTrigo->count();
+        this->ui->LstTrigo->setCurrentRow(nbElem-1);
+      }
+
+    if ((index>=3) && (index<=6))
+     {
+        nbElem = this->ui->LstMath->count();
+        this->ui->LstMath->setCurrentRow(nbElem-1);
+     }
+    if ((index>=7) && (index<=8))
+    {
+        nbElem = this->ui->LstGeo->count();
+        this->ui->LstGeo->setCurrentRow(nbElem-1);
+    }
+}
 //*******************************************
 //              CONSTRUCTEUR
 //*******************************************
@@ -784,6 +849,7 @@ void fcreation::CBChoisirCouleur(void)
 void fcreation::CBCreer(void)
 {
     this->_ctrlCreate->creerForme();
+    this->selectLastRow();
 }
 
 void fcreation::CBSupprimerLigne(void)
@@ -793,6 +859,7 @@ void fcreation::CBSupprimerLigne(void)
 
 void fcreation::CBLigneSelectionnee(int l)
 {
+
     this->_ctrlCreate->afficherSelectionLigne(l);
 }
 
@@ -801,7 +868,6 @@ void fcreation::CBParametrerLimites (void)
     int index = this->verifChecked();
     this->AfficherFenetreGraphique();
 
-
     //********************************************
     //Parametrage des valeurs Mini et Maxi pour la Trigo
     //********************************************
@@ -809,9 +875,7 @@ void fcreation::CBParametrerLimites (void)
       {
         this->initialiserTab(index);
         this->initialiserTips(index);
-        this->ui->LstTrigo->setCurrentRow(-1);
-        this->ui->LstMath->setCurrentRow(-1);
-        this->ui->LstGeo->setCurrentRow(-1);
+        this->ui->LstTrigo->setCurrentRow(0);
       }
 
         //********************************************
@@ -821,9 +885,7 @@ void fcreation::CBParametrerLimites (void)
      {
         this->initialiserTab(index);
         this->initialiserTips(index);
-        this->ui->LstTrigo->setCurrentRow(-1);
-        this->ui->LstMath->setCurrentRow(-1);
-        this->ui->LstGeo->setCurrentRow(-1);
+        this->ui->LstMath->setCurrentRow(0);
       }
 
         //********************************************
@@ -833,9 +895,7 @@ void fcreation::CBParametrerLimites (void)
     {
         this->initialiserTab(index);
         this->initialiserTips(index);
-        this->ui->LstTrigo->setCurrentRow(-1);
-        this->ui->LstMath->setCurrentRow(-1);
-        this->ui->LstGeo->setCurrentRow(-1);
+        this->ui->LstGeo->setCurrentRow(0);
     }
 
 }
