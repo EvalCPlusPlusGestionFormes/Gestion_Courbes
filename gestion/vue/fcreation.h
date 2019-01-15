@@ -43,17 +43,21 @@ public:
     void Effacer(const int type);
     void Selectionner(const int type,const int sel);
     int verifChecked(void);
-    void recupParamsCosSin(int&, double&);
+    void recupParamsTrigo(int&, double&);
     void recupParamsMaths(double&, double&, double&);
     void recupParamsGeo(double&, double&);
     void recupParamsCommuns(double&, double&, double&, double&,
                             QColor&, int&);
     void setParamCommuns(const double, const double, const double, const double,
                          const QColor, const int);
+    void setParamTrigo(const int, const double);
+    void setParamMath(const double, const double, const double);
+    void setParamGeo(const double, const double);
     void initialiserTabTrigo(void);
     void initialiserTabMath(int);
     void initialiserTabGeo(int);
     void initialiserTips(int);
+    void selectLastRow(void);
 
 private:
     //*******************************************

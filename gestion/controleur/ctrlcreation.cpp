@@ -129,22 +129,125 @@ static void EffacerSelection(
             sel = -1;
         }
     }
+static void recupParamCommunsSelection(const int sel,gesdessin *gd,
+                                       double &ex, double &ey,
+                                       double &tx, double &ty,
+                                       QColor &ct, int &et)
+{
+        dessin *des;
 
-static void recupParamSelect(gesdessin *gd,
+        des = gd->Lire(sel,et, ct);
+        ex = des->LireEx();
+        ey = des->LireEy();
+        tx = des->LireTx();
+        ty = des->LireTy();
+}
+
+static void recupParamTrigoSelection(const int sel, gesdessin *gd,
+                                     int &np, double &vp)
+{
+    dessin *des;
+    trigo *trig;
+
+    des = gd->Lire(sel);
+    trig = (trigo*)des;
+
+    np = trig->LireNbPeriode();
+    vp = trig->LirePas();
+
+}
+
+static void recupParamMathSelection(const int sel, gesdessin *gd, double &xmi,
+                                     double &xma, double &vp)
+{
+    dessin *des;
+    maths *math;
+
+    des = gd->Lire(sel);
+    math = (maths*)des;
+
+    xmi= math->LireBorneInf();
+    xma= math->LireBorneSup();
+    vp= math->LirePas();
+}
+
+static void recupParamGeoSelection(const int sel, gesdessin *gd,
+                                   double &LarRay, double &HautPas)
+{
+    dessin *des;
+    cercle *cer;
+    rectangle *rect;
+    int type;
+
+    des = gd->Lire(sel);
+    type = des->LireType();
+
+    if(type == 1000)
+    {
+        cer = (cercle*)des;
+        LarRay = cer->LireRayon();
+        HautPas = cer->LirePas();
+    }
+    if(type == 2000)
+    {
+        rect = (rectangle*)des;
+        rect->LireDimensions(LarRay, HautPas);
+    }
+}
+
+static void recupParamSelection(gesdessin *gd,
                              fcreation *fc,
                              int sel)
 {
+    int type;
+    double vp;
+    //Communs
     double ex, ey, tx, ty;
     int et;
     QColor ct;
-    dessin *des;
+    //Trigo
+    int np;
+    //Maths
+    double xmi, xma;
+    //Geo
+    double larRay, hautPas;
 
-    des = gd->Lire(sel,et, ct);
-    ex = des->LireEx();
-    ey = des->LireEy();
-    tx = des->LireTx();
-    ty = des->LireTy();
-    fc->setParamCommuns(ex, ey, tx, ty, ct, et);
+    //Récupération de l'objet et du type
+    dessin *des = gd->Lire(sel);
+    type= des->LireType();
+
+    if(type!=3000)
+    {
+        recupParamCommunsSelection(sel, gd, ex, ey, tx, ty, ct, et);
+        fc->setParamCommuns(ex, ey, tx, ty, ct, et);
+    }
+    else
+    {
+        int index = fc->verifChecked();
+        if ((index>=1) && (index<=2))
+            fc->initialiserTabTrigo();
+        if ((index>=3) && (index<=6))
+            fc->initialiserTabMath(index);
+        if ((index>=7) && (index<=8))
+            fc->initialiserTabGeo(index);
+    }
+
+    if((type==100)||(type==200))
+    {
+        recupParamTrigoSelection(sel, gd, np, vp);
+        fc->setParamTrigo(np, vp);
+    }
+    if((type==20)||(type==30)||(type==50)||(type==60))
+    {
+        recupParamMathSelection(sel, gd, xmi, xma, vp);
+        fc->setParamMath(xmi, xma, vp);
+    }
+    if ((type==1000) || (type==2000))
+    {
+        recupParamGeoSelection(sel, gd, larRay, hautPas);
+        fc->setParamGeo(larRay, hautPas);
+    }
+
 }
 
 static void AfficherSelection(
@@ -160,11 +263,13 @@ static void AfficherSelection(
                 gd->EcrireEpaisseur(sel,3);
 
                 if(l!=0)
+                {
                     gd->Colorer(sel,Qt::red);
+                }
                 else
                     gd->EcrireEpaisseur(0);
 
-                recupParamSelect(gd, fc, sel);
+                recupParamSelection(gd, fc, sel);
                 Reafficher(gd);
         }
     }
@@ -339,7 +444,7 @@ static void AjouterTrigos(
     switch(index)
     {
     case 1 : 
-        fc->recupParamsCosSin(np, vp);
+        fc->recupParamsTrigo(np, vp);
         dc = gd->AjouterCosinus();
 
         dc->EcrireNbPeriode(np);
@@ -362,7 +467,7 @@ static void AjouterTrigos(
         break;
 
     case 2:
-        fc->recupParamsCosSin(np, vp);
+        fc->recupParamsTrigo(np, vp);
         ds = gd->AjouterSinus();
 
         ds->EcrireNbPeriode(np);
@@ -489,6 +594,11 @@ static bool supprimerTrace(
             AfficherListe(t,gd,fc,sel);
             Reafficher(gd);
         }
+        else
+            EffacerSelection(gd,sel);
+            AfficherListe(t,gd,fc,sel);
+            Reafficher(gd);
+
         return (ok);
     }
 
@@ -537,10 +647,13 @@ void ctrlcreation::initialiser(void)
     this->_fTrigo->EcrireTraitementClose(1);
 
 
-    //Ajouter le repÃ¨re.
+    //Ajouter le repèrere.
     AjouterRepere(2, this->_fTrigo);
+    AfficherListe(2, _fTrigo,_fc,_selectionTrigo);
     AjouterRepere(1, this->_fMath);
+    AfficherListe(1, _fMath,_fc,_selectionMath);
     AjouterRepere(3, this->_fGeo);
+    AfficherListe(3, _fGeo,_fc,_selectionGeo);
 
     //Affiche le repÃ¨re.
     this->_fTrigo->ChoisirModeAffichage(0);
