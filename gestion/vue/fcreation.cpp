@@ -335,6 +335,9 @@ void fcreation::initialiserTab(int index)
         this->ui->spinTransYTrigo->setValue(-1.0);
         this->ui->BtnCouleurTrigo->setStyleSheet("background-color: rgb(0, 0, 0);");
         this->setCouleurCourbes(Qt::black);
+        this->ui->LstTrigo->setCurrentRow(0);
+        this->ui->LstTrigo->setFocus();
+
         break;
 
     case 2:
@@ -352,6 +355,9 @@ void fcreation::initialiserTab(int index)
         this->ui->spinTransYTrigo->setValue(-1.0);
         this->ui->BtnCouleurTrigo->setStyleSheet("background-color: rgb(0, 0, 0);");
         this->setCouleurCourbes(Qt::black);
+        this->ui->LstTrigo->setCurrentRow(0);
+        this->ui->LstTrigo->setFocus();
+
         break;
 
     //Parametrage ComboBox et positionnement sur la valeur=1 (0)
@@ -376,6 +382,9 @@ void fcreation::initialiserTab(int index)
         this->ui->spinTransYMath->setValue(-0.5);
         this->ui->BtnCouleurMath->setStyleSheet("background-color: rgb(0, 0, 0);");
         this->setCouleurCourbes(Qt::black);
+        this->ui->LstMath->setCurrentRow(0);
+        this->ui->LstTrigo->setFocus();
+
 
         //Parametrage ComboBox et positionnement sur la valeur=1 (0)
         this->ui->comboEpaisseurMath->setCurrentIndex(0);
@@ -400,6 +409,9 @@ void fcreation::initialiserTab(int index)
         this->ui->spinTransYMath->setValue(-2.0);
         this->ui->BtnCouleurMath->setStyleSheet("background-color: rgb(0, 0, 0);");
         this->setCouleurCourbes(Qt::black);
+        this->ui->LstMath->setCurrentRow(0);
+        this->ui->LstTrigo->setFocus();
+
 
         //Parametrage ComboBox et positionnement sur la valeur=1 (0)
         this->ui->comboEpaisseurMath->setCurrentIndex(0);
@@ -424,6 +436,9 @@ void fcreation::initialiserTab(int index)
         this->ui->spinTransYMath->setValue(-0.5);
         this->ui->BtnCouleurMath->setStyleSheet("background-color: rgb(0, 0, 0);");
         this->setCouleurCourbes(Qt::black);
+        this->ui->LstMath->setCurrentRow(0);
+        this->ui->LstTrigo->setFocus();
+
 
         //Parametrage ComboBox et positionnement sur la valeur=1 (0)
         this->ui->comboEpaisseurMath->setCurrentIndex(0);
@@ -448,6 +463,8 @@ void fcreation::initialiserTab(int index)
         this->ui->spinTransYMath->setValue(-0.5);
         this->ui->BtnCouleurMath->setStyleSheet("background-color: rgb(0, 0, 0);");
         this->setCouleurCourbes(Qt::black);
+        this->ui->LstMath->setCurrentRow(0);
+        this->ui->LstTrigo->setFocus();
 
         //Parametrage ComboBox et positionnement sur la valeur=1 (0)
         this->ui->comboEpaisseurMath->setCurrentIndex(0);
@@ -474,6 +491,8 @@ void fcreation::initialiserTab(int index)
         this->ui->spinTransYGeo->setValue(-12.0);
         this->ui->BtnCouleurGeo->setStyleSheet("background-color: rgb(0, 0, 0);");
         this->setCouleurCourbes(Qt::black);
+        this->ui->LstGeo->setCurrentRow(0);
+        this->ui->LstTrigo->setFocus();
 
         //Parametrage ComboBox et positionnement sur la valeur=1 (0)
         this->ui->comboEpaisseurGeo->setCurrentIndex(0);
@@ -500,6 +519,8 @@ void fcreation::initialiserTab(int index)
         this->ui->spinTransYGeo->setValue(-12.0);
         this->ui->BtnCouleurGeo->setStyleSheet("background-color: rgb(0, 0, 0);");
         this->setCouleurCourbes(Qt::black);
+        this->ui->LstGeo->setCurrentRow(0);
+        this->ui->LstTrigo->setFocus();
 
         //Parametrage ComboBox et positionnement sur la valeur=1 (0)
         this->ui->comboEpaisseurGeo->setCurrentIndex(0);
@@ -678,6 +699,8 @@ fcreation::fcreation(ctrlcreation *creation, QWidget *parent) :
     ui->setupUi(this);
     this->initialiserCB();
     this->initialiserTab(1);
+
+
 }
 
 //*******************************************
@@ -875,7 +898,7 @@ void fcreation::CBParametrerLimites (void)
       {
         this->initialiserTab(index);
         this->initialiserTips(index);
-        this->ui->LstTrigo->setCurrentRow(0);
+
       }
 
         //********************************************
@@ -885,7 +908,7 @@ void fcreation::CBParametrerLimites (void)
      {
         this->initialiserTab(index);
         this->initialiserTips(index);
-        this->ui->LstMath->setCurrentRow(0);
+
       }
 
         //********************************************
@@ -895,7 +918,6 @@ void fcreation::CBParametrerLimites (void)
     {
         this->initialiserTab(index);
         this->initialiserTips(index);
-        this->ui->LstGeo->setCurrentRow(0);
     }
 
 }
