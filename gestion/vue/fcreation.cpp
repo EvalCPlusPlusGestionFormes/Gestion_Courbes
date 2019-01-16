@@ -935,6 +935,7 @@ void fcreation::CBModifLigne(void)
 void fcreation::CBVider(void)
 {
     this->_ctrlCreate->detruireFormes();
+    this->selectLastRow();
 }
 
 //*******************************************
