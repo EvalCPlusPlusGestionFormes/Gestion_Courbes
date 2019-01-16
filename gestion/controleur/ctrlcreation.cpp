@@ -238,12 +238,7 @@ static void recupParamSelection(gesdessin *gd,
     else
     {
         int index = fc->verifChecked();
-        if ((index>=1) && (index<=2))
-            fc->initialiserTabTrigo();
-        if ((index>=3) && (index<=6))
-            fc->initialiserTabMath(index);
-        if ((index>=7) && (index<=8))
-            fc->initialiserTabGeo(index);
+        fc->initialiserTab(index);
     }
 
     if((type==100)||(type==200))
@@ -815,7 +810,11 @@ void ctrlcreation::initialiser(void)
     AjouterRepere(1, this->_fMath);
     AfficherListe(1, _fMath,_fc,_selectionMath);
     AjouterRepere(3, this->_fGeo);
-    AfficherListe(3, _fGeo,_fc,_selectionGeo);
+
+    AfficherListe(2,this->_fTrigo,this->_fc,1);
+    AfficherListe(1,this->_fMath,this->_fc,3);
+    AfficherListe(3,this->_fGeo,this->_fc,5);
+
 
     //Affiche le repère.
     this->_fTrigo->ChoisirModeAffichage(0);

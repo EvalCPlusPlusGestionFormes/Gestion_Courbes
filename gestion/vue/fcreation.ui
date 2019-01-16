@@ -1247,6 +1247,9 @@ font: 11pt &quot;Arial&quot;;</string>
                    <property name="maximum">
                     <double>37.000000000000000</double>
                    </property>
+                   <property name="singleStep">
+                    <double>0.010000000000000</double>
+                   </property>
                   </widget>
                  </item>
                  <item row="7" column="0">

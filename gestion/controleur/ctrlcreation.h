@@ -45,6 +45,7 @@ public:
    void creerForme(void);
    void detruireFormes(void);
    void supprimerForme(void);
+
 };
 
 #endif // CTRLCREATION_H

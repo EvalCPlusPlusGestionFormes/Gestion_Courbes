@@ -50,13 +50,13 @@ public:
                             QColor&, int&);
     void setParamCommuns(const double, const double, const double, const double,
                          const QColor, const int);
+    void initialiserTab(int);
+    void initialiserTips(int);
+    void AfficherFenetreGraphique(void);
+    void initialiserCerRect(int);
     void setParamTrigo(const int, const double);
     void setParamMath(const double, const double, const double);
     void setParamGeo(const double, const double);
-    void initialiserTabTrigo(void);
-    void initialiserTabMath(int);
-    void initialiserTabGeo(int);
-    void initialiserTips(int);
     void selectLastRow(void);
 
 private:
@@ -77,7 +77,6 @@ protected:
     void closeEvent(QCloseEvent *event) Q_DECL_OVERRIDE;
 
 private slots:
-    void CBAfficherFenetreGraphique(void);
     void CBCreer(void);
     void CBSupprimerLigne(void);
     void CBVider(void);
