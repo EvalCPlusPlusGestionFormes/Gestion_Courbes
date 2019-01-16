@@ -335,7 +335,7 @@ void fcreation::initialiserTabTrigo(void)
 
     //Parametrage ComboBox et positionnement sur la valeur=1 (0)
     this->ui->comboEpaisseurTrigo->setCurrentIndex(0);
-}
+    }
 
 void fcreation::initialiserTabMath(int index)
 {
@@ -640,6 +640,7 @@ fcreation::fcreation(ctrlcreation *creation, QWidget *parent) :
     ui->setupUi(this);
     this->initialiserCB();
     this->initialiserTabTrigo();
+
 }
 
 //*******************************************
@@ -801,26 +802,26 @@ void fcreation::CBAfficherFenetreGraphique(void)
 
 void fcreation::CBChoisirCouleur(void)
 {
-      QString scouleur;
-      QColor couleur = QColorDialog::getColor(Qt::white,this);
-      scouleur=QString("background-color: ")+couleur.name()+";";
-      int i=this->ui->tabWidgetForme->currentIndex();
+  QString scouleur;
+  QColor couleur = QColorDialog::getColor(Qt::white,this);
+  scouleur=QString("background-color: ")+couleur.name()+";";
+  int i=this->ui->tabWidgetForme->currentIndex();
 
-        if (i==0)
-           {
-                this->ui->BtnCouleurTrigo->setStyleSheet(scouleur);
-                this->setCouleurCourbes(couleur);
-            }
-       if (i==1)
-            {
-                this->ui->BtnCouleurMath->setStyleSheet(scouleur);
-                this->setCouleurCourbes(couleur);
-            }
-        if (i==2)
-            {
-                this->ui->BtnCouleurGeo->setStyleSheet(scouleur);
-                this->setCouleurCourbes(couleur);
-            }
+    if (i==0)
+       {
+            this->ui->BtnCouleurTrigo->setStyleSheet(scouleur);
+            this->setCouleurCourbes(couleur);
+        }
+   if (i==1)
+        {
+            this->ui->BtnCouleurMath->setStyleSheet(scouleur);
+            this->setCouleurCourbes(couleur);
+        }
+    if (i==2)
+        {
+            this->ui->BtnCouleurGeo->setStyleSheet(scouleur);
+            this->setCouleurCourbes(couleur);
+        }
 }
 
 
@@ -876,6 +877,12 @@ void fcreation::CBParametrerLimites (void)
 
 }
 
+void fcreation::CBModifLigne(void)
+{
+    this->_ctrlCreate->modifLigne();
+    this->selectLastRow();
+}
+
 void fcreation::CBVider(void)
 {
     this->_ctrlCreate->detruireFormes();
@@ -894,7 +901,4 @@ void fcreation::closeEvent(QCloseEvent *event)
         qApp->quit();
 }
 
-void fcreation::CBModifLigne(void)
-{
-    this->_ctrlCreate->modifLigne();
-}
+

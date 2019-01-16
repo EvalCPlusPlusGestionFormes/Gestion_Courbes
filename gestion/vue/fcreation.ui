@@ -1935,22 +1935,6 @@ background-color: rgb(221, 0, 0);</string>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButtonAfficher">
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>35</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">font: 75 11pt &quot;MS Shell Dlg 2&quot;;</string>
-        </property>
-        <property name="text">
-         <string>Afficher</string>
-        </property>
-       </widget>
-      </item>
-      <item>
        <widget class="QPushButton" name="pushButtonVider">
         <property name="maximumSize">
          <size>

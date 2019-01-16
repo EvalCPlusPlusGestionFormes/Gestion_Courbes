@@ -129,6 +129,20 @@ static void EffacerSelection(
             sel = -1;
         }
     }
+
+static void EffacerSelection(gesdessin *gd,
+                             int &sel,
+                             const QColor color,
+                             const int et)
+{
+    if (sel != -1)
+    {
+        gd->Colorer(sel, color);
+        gd->EcrireEpaisseur(sel, et);
+        sel = -1;
+    }
+}
+
 static void recupParamCommunsSelection(const int sel,gesdessin *gd,
                                        double &ex, double &ey,
                                        double &tx, double &ty,
@@ -544,7 +558,7 @@ static void AjouterGeo(
     }
 }
 
-static void modifierTrigos(gesdessin *gd, fcreation *fc, const int sel)
+static void modifierTrigos(gesdessin *gd, fcreation *fc, int &sel)
 {
     dessin *des;
     trigo *trig;
@@ -557,6 +571,7 @@ static void modifierTrigos(gesdessin *gd, fcreation *fc, const int sel)
 
     fc->recupParamsCommuns(ex, ey, tx, ty, ct, et);
     fc->recupParamsTrigo(np, vp);
+
 
     trig->EcrireNbPeriode(np);
     trig->EcrirePas(vp);
@@ -576,9 +591,10 @@ static void modifierTrigos(gesdessin *gd, fcreation *fc, const int sel)
                 ty
                 );
 
+    EffacerSelection(gd, sel, ct, et);
 }
 
-static void modifierMaths(gesdessin *gd, fcreation *fc, const int sel)
+static void modifierMaths(gesdessin *gd, fcreation *fc, int &sel)
 {
     dessin *des;
     maths *math;
@@ -610,10 +626,10 @@ static void modifierMaths(gesdessin *gd, fcreation *fc, const int sel)
                 //Translation en y
                 ty
                 );
-
+    EffacerSelection(gd, sel, ct, et);
 }
 
-static void modifierGeo(gesdessin *gd, fcreation *fc, const int sel)
+static void modifierGeo(gesdessin *gd, fcreation *fc, int &sel)
 {
     int type;
     dessin *des;
@@ -671,7 +687,7 @@ static void modifierGeo(gesdessin *gd, fcreation *fc, const int sel)
                     ty
                     );
     }
-
+    EffacerSelection(gd, sel, ct, et);
 }
 
 static void ajouter(
@@ -688,7 +704,7 @@ static void ajouter(
         AjouterGeo(gd,fc,index);
 }
 
-static void modifier(const int t, gesdessin *gd,fcreation *fc, const int sel)
+static void modifier(const int t, gesdessin *gd,fcreation *fc, int &sel)
 {
     if (t == 1)
         modifierMaths(gd, fc, sel);
@@ -710,7 +726,7 @@ static void creerTraces(
     Reafficher(gd);
 }
 
-static void modifierTraces(const int t, gesdessin *gd, fcreation *fc, const int sel)
+static void modifierTraces(const int t, gesdessin *gd, fcreation *fc, int sel)
 {
     modifier(t, gd, fc, sel);
     AfficherListe(t, gd, fc, sel);
@@ -882,15 +898,15 @@ void ctrlcreation::modifLigne(void)
 {
     int index = this->_fc->verifChecked();
 
-    if((index>=1) && (index<=2))
+    if((index>=1) && (index<=2) && (_selectionTrigo != 0) && (_selectionTrigo != -1))
         modifierTraces(2,this->_fTrigo,this->_fc,this->_selectionTrigo);
-        //creerTraces(2, this->_fTrigo, this->_fc, this->_selectionTrigo, index);
-    if((index>=3) && (index<=6))
+    else if((index>=3) && (index<=6) && (_selectionMath != 0) && (_selectionMath != -1))
         modifierTraces(1,this->_fMath,this->_fc,this->_selectionMath);
-        //creerTraces(1, this->_fMath, this->_fc, this->_selectionMath, index);
-    if((index>=7) && (index<=8))
+    else if((index>=7) && (index<=8) && (_selectionGeo !=0) && (_selectionGeo != -1))
         modifierTraces(3,this->_fGeo,this->_fc,this->_selectionGeo);
-        //creerTraces(3, this->_fGeo, this->_fc, this->_selectionGeo, index);
+    else
+        this->_fc->informer("Le repere ne peut etre modifie");
+
 }
 
 void ctrlcreation::creerForme(void)
