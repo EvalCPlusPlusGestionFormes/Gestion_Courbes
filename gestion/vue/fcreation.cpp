@@ -10,6 +10,30 @@
 #include "ui_fcreation.h"
 #include "ctrlcreation.h"
 
+//*******************************************
+//              CONSTRUCTEUR
+//*******************************************
+fcreation::fcreation(ctrlcreation *creation, QWidget *parent) :
+    QMainWindow(parent),
+    ui(new Ui::fcreation)
+{
+    this->_ctrlCreate = creation;
+    ui->setupUi(this);
+    this->initialiserCB();
+    this->initialiserTab(1);
+}
+
+//*******************************************
+//              DESTRUCTEUR
+//*******************************************
+fcreation::~fcreation()
+{
+    delete ui;
+}
+
+//*******************************************
+//          METHODES STATICS
+//*******************************************
 static void EffacerListe(
         QListWidget *l)
 {
@@ -59,38 +83,6 @@ static void SelectionnerListe(
         l->setCurrentRow(sel);
 }
 
-//*******************************************
-//              METHODES PUBLICS
-//*******************************************
-
-void fcreation::setCouleurCourbes(const QColor ccouleur)
-{
-    this->_couleurCourbes=ccouleur;
-}
-
-QColor fcreation::getCouleurCourbes(void)
-{
-    return(this->_couleurCourbes);
-}
-
-int fcreation::recupLigneSelect(const int index)
-{
-    int ligne;
-    if((index>=1) && (index<=2))
-    {
-        ligne = this->ui->LstTrigo->currentRow();
-    }
-    if((index>=3) && (index<=6))
-    {
-       ligne = this->ui->LstMath->currentRow();
-    }
-    if((index>=7) && (index<=8))
-    {
-       ligne = this->ui->LstGeo->currentRow();
-    }
-    return(ligne);
-}
-
 //Méthode confirmer qui permet d'avoir le messageBox de confirmation
 //Avant de quitter l'application.
 bool fcreation::confirmer(const char *q)
@@ -114,6 +106,42 @@ void fcreation::informer(const char *s)
                 "Confirmation",
                 s);
 }
+//*******************************************
+//              ACCESSEURS
+//*******************************************
+
+void fcreation::setCouleurCourbes(const QColor ccouleur)
+{
+    this->_couleurCourbes=ccouleur;
+}
+
+QColor fcreation::getCouleurCourbes(void)
+{
+    return(this->_couleurCourbes);
+}
+
+//*******************************************
+//              METHODES PUBLIC
+//*******************************************
+int fcreation::recupLigneSelect(const int index)
+{
+    int ligne;
+    if((index>=1) && (index<=2))
+    {
+        ligne = this->ui->LstTrigo->currentRow();
+    }
+    if((index>=3) && (index<=6))
+    {
+       ligne = this->ui->LstMath->currentRow();
+    }
+    if((index>=7) && (index<=8))
+    {
+       ligne = this->ui->LstGeo->currentRow();
+    }
+    return(ligne);
+}
+
+
 
 QListWidget* fcreation::Chercher(
         const int type)
@@ -129,6 +157,7 @@ QListWidget* fcreation::Chercher(
     return (l);
 }
 
+
 void fcreation::Afficher(
         const int type,
         string *sm,
@@ -140,6 +169,7 @@ void fcreation::Afficher(
     if (l != NULL)
         AfficherListe(l,sm,sr,nbs);
 }
+
 
 void fcreation::Effacer(
         const int type)
@@ -686,26 +716,6 @@ void fcreation::selectLastRow(void)
         nbElem = this->ui->LstGeo->count();
         this->ui->LstGeo->setCurrentRow(nbElem-1);
     }
-}
-//*******************************************
-//              CONSTRUCTEUR
-//*******************************************
-fcreation::fcreation(ctrlcreation *creation, QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::fcreation)
-{
-    this->_ctrlCreate = creation;
-    ui->setupUi(this);
-    this->initialiserCB();
-    this->initialiserTab(1);
-}
-
-//*******************************************
-//              DESTRUCTEUR
-//*******************************************
-fcreation::~fcreation()
-{
-    delete ui;
 }
 
 //*******************************************

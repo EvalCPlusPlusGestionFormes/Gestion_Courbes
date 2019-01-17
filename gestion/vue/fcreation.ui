@@ -25,17 +25,6 @@
   <property name="windowTitle">
    <string>Gestion de Formes</string>
   </property>
-  <property name="windowIcon">
-   <iconset>
-    <normaloff>logo_Eval.png</normaloff>
-    <normalon>logo_Eval.png</normalon>
-    <disabledoff>:/vue/logo_Eval.png</disabledoff>
-    <disabledon>:/vue/logo_Eval.png</disabledon>
-    <activeoff>:/vue/logo_Eval.png</activeoff>
-    <activeon>:/vue/logo_Eval.png</activeon>
-    <selectedoff>:/vue/logo_Eval.png</selectedoff>
-    <selectedon>:/vue/logo_Eval.png</selectedon>logo_Eval.png</iconset>
-  </property>
   <property name="windowOpacity">
    <double>100.000000000000000</double>
   </property>

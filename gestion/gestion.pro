@@ -60,3 +60,5 @@ else:unix: LIBS += -L$$PWD/../build-dlldessiner-Desktop_Qt_5_11_1_MinGW_32bit-De
 
 INCLUDEPATH += $$PWD/../dlldessiner
 DEPENDPATH += $$PWD/../dlldessiner
+
+

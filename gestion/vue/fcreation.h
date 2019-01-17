@@ -29,13 +29,20 @@ public:
     ~fcreation();
 
     //*******************************************
-    //          METHODES PUBLICS
+    //          ACCESSEURS
     //*******************************************
-    static void informer(const char *s);
-    static bool confirmer(const char *q);
-
     void setCouleurCourbes(const QColor);
     QColor getCouleurCourbes(void);
+
+    //*******************************************
+    //          METHODES STATICS
+    //*******************************************
+    static bool confirmer(const char *q);
+    static void informer(const char *s);
+
+    //*******************************************
+    //          METHODES PUBLICS
+    //*******************************************
     int recupLigneSelect(const int);
     void supprimerLigneList(const int, const int);
     QListWidget *Chercher(const int type);

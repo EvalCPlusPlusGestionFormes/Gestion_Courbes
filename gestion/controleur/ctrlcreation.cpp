@@ -67,7 +67,7 @@ static void Positionner(
     f->move(x,y);
 }
 
-//********  Ajout d'un repèrere ********
+//********  Ajout d'un repï¿½rere ********
 static void AjouterRepere(
         const int t,
         gesdessin *gd)
@@ -226,7 +226,7 @@ static void recupParamSelection(gesdessin *gd,
     //Geo
     double larRay, hautPas;
 
-    //Récupération de l'objet et du type
+    //Rï¿½cupï¿½ration de l'objet et du type
     dessin *des = gd->Lire(sel);
     type= des->LireType();
 
@@ -354,7 +354,7 @@ static void AjouterMaths(
            dp->EcrirePas(vp);
            gd->Ecrire(
                        dp,
-                       //Epaisseur du tracé
+                       //Epaisseur du tracï¿½
                        et,
                        //Couleur
                        ct,
@@ -376,7 +376,7 @@ static void AjouterMaths(
            dr->EcrirePas(vp);
            gd->Ecrire(
                        dr,
-                       //Epaisseur du tracé
+                       //Epaisseur du tracï¿½
                        et,
                        //Couleur
                        ct,
@@ -398,7 +398,7 @@ static void AjouterMaths(
            df->EcrirePas(vp);
            gd->Ecrire(
                        df,
-                       //Epaisseur du tracé
+                       //Epaisseur du tracï¿½
                        et,
                        //Couleur
                        ct,
@@ -420,7 +420,7 @@ static void AjouterMaths(
            de->EcrirePas(vp);
            gd->Ecrire(
                        de,
-                       //Epaisseur du tracé
+                       //Epaisseur du tracï¿½
                        et,
                        //Couleur
                        ct,
@@ -804,7 +804,7 @@ void ctrlcreation::initialiser(void)
     this->_fTrigo->EcrireTraitementClose(1);
 
 
-    //Ajouter le repèrere.
+    //Ajouter le repï¿½rere.
     AjouterRepere(2, this->_fTrigo);
     AfficherListe(2, _fTrigo,_fc,_selectionTrigo);
     AjouterRepere(1, this->_fMath);
