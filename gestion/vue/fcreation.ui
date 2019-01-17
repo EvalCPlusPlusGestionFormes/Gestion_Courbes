@@ -22,12 +22,9 @@
     <height>450</height>
    </size>
   </property>
-  <property name="windowTitle">
-   <string>Gestion de Formes</string>
-  </property>
   <property name="windowIcon">
    <iconset resource="../logo_gestion_formes.qrc">
-    <normaloff>:/vue/Logo_Eval.jpg</normaloff>:/vue/Logo_Eval.jpg</iconset>
+    <normaloff>:/vue/logo_Eval.png</normaloff>:/vue/logo_Eval.png</iconset>
   </property>
   <property name="windowOpacity">
    <double>100.000000000000000</double>
