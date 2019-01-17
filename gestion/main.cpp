@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
     creation = new ctrlcreation();
 
     //Ajout du logo pour l'application
-    QApplication::setWindowIcon(QIcon(":/vue/Logo_Eval.jpg"));
+    QApplication::setWindowIcon(QIcon(":/vue/logo_Eval.png"));
 
 
    r = a.exec();

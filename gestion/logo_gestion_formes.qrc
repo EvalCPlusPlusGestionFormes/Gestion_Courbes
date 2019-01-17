@@ -1,5 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>vue/Logo_Eval.jpg</file>
+        <file>vue/logo_Eval.png</file>
     </qresource>
 </RCC>
